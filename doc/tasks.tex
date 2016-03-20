@@ -1,0 +1,114 @@
+\subsection{User Stories}
+\emph{As a beginner, }
+\begin{itemize}
+  \item I want to compile my source code.
+  \item I want to navigate to my source code.
+  \item I want to be able to edit my source.
+  \item I want easy access to information about what I am doing.
+  \item I want to install the tools I need to make code.
+  \item I want to know what I can do.
+  \item I want to be able to open everything like I was able in windows.
+  \item I want to know what my command is going to do.
+  \item I want the same visual feedback a file browser gives me.
+  \item I want to know how to utilize my shell’s history.
+  \item I want to be able to easily and obviously perform common tasks.
+  \item when I type a filename, I want the most common task associate with that file to be suggested.
+  \item when I drag a file into the command line, I want that file name to be typed.
+\end{itemize}
+
+\emph{As a moderate user, }
+\begin{itemize}
+  \item I want to automate my workflow.
+  \item I want the system to alert me when automation is an option.
+\end{itemize}
+
+\emph{As an expert user, }
+\begin{itemize}
+  \item I want tab-completion that is file-type aware
+  \item I want heads up information about my system as I use it
+\end{itemize}
+
+\emph{As any user, }
+\begin{itemize}
+  \item I want to be able to copy and paste.
+  \item I want to be able to drag a link into my shell and have the file be added to the current directory.
+  \item I want the system to learn about my most common tasks.
+  \item I want to know what options are available to me for a given command.
+  \item I want contextual information displayed to me when composing commands.
+  \item I want to view files in the current directory as I move through the system.
+  \item I want to be able to undo what I’ve done.
+\end{itemize}
+
+\subsection{Hierarchical Analysis of Selected Tasks}
+\begin{enumerate}
+  \item As any user, I want to be able to undo what I’ve done.
+  \begin{enumerate}
+    \item run a command
+    \begin{enumerate}
+      \item know what command to run
+      \item write the command
+    \end{enumerate}
+    \begin{enumerate}
+      \item understand the results of the command
+      \begin{enumerate}
+        \item view what files/directories/settings were changed
+        \item view how they were changed
+      \end{enumerate}
+    \end{enumerate}
+    \item undo a command
+  \end{enumerate}
+
+  \item As a beginner, I want to know what I can do with a file.
+  \begin{enumerate}
+    \item specify a file
+    \begin{enumerate}
+      \item see what files are in my current working directory
+      \item select one of those files
+    \end{enumerate}
+    \item view the available commands
+    \begin{enumerate}
+      \item view a list of what commands would be useful for that file
+      \item view what each command does
+    \end{enumerate}
+    \item run a command on the file
+    \begin{enumerate}
+      \item select a command
+    \end{enumerate}
+  \end{enumerate}
+
+  \item As a casual user, I want to automate my workflow.
+  \begin{enumerate}
+    \item specify a task which needs to be run many times
+    \item view suggestions on how to run that task
+    \item select an automation technique
+  \end{enumerate}
+
+  \item 4. As a beginner, I want to know what the command is going to do.
+  \begin{enumerate}
+    \item specify a command
+    \item view that command’s effects
+    \begin{enumerate}
+      \item view which files are going to be affected
+      \item view how those files are going to be affected
+    \end{enumerate}
+    \item chose whether to run the command or not
+  \end{enumerate}
+
+  \item As an expert user, I want heads-up information about my system as I use it.
+  \begin{enumerate}
+    \item see what the state of my session is
+    \begin{enumerate}
+      \item view background jobs
+      \item view possible commands based on the current context
+      \begin{enumerate}
+        \item take local files into account
+      \end{enumerate}
+      \item view the ways the current session has been altered - non-normal
+      environment variables, virtual environments, et cetera.
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

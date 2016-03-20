@@ -56,3 +56,7 @@ Session.vim
 # auto-generated tag files
 tags
 
+
+*.aux
+doc/auto/
+
