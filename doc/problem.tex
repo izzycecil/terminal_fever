@@ -5,20 +5,19 @@
   \label{fig:sketch}
 \end{figure}
 
-Shown above in \figure[fig:sketch] is the problem sketch for our project. The
+Shown in Figure (\ref{fig:sketch}) is the problem sketch for our project. The
 frames are color-coded according to the model-view-controller (MVC) design
 pattern: green is model; blue is view; red is controller.
 
-The sketch begins
-with a user, of any experience level, who interacts with the system via keyboard
-and mouse. Their view into the system consists of a CLI window and a contextual
-information window.
+The sketch begins with a user, of any experience level, who interacts with the
+system via keyboard and mouse. Their view into the system consists of a CLI
+window and a contextual information window.
 
-A user's input in passed from the interface through the
-interaction engine. The interaction engine processes this text for command
-suggestions, autocompletion, and automation. The OS's man pages, predefined
-built-in patterns, the user's history, and the current state of the shell are
-all used by the interaction engine for these features.
+A user's input in passed from the interface through the interaction engine. The
+interaction engine processes this text for command suggestions, autocompletion,
+and automation. The OS's man pages, predefined built-in patterns, the user's
+history, and the current state of the shell are all used by the interaction
+engine for these features.
 
 This system has a two-step state design, consisting of an 'active' state and a
 'preview' state. For any command run, changes to the file system or to the state
