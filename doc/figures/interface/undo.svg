@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.73"
-     inkscape:cx="198.06269"
-     inkscape:cy="207.81235"
+     inkscape:cx="129.09829"
+     inkscape:cy="104.51032"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -60,24 +60,27 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-327.0625,-456.19741)">
-    <path
-       style="fill:#b3b3b3;fill-rule:evenodd;stroke:none;stroke-width:1.76320064;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 725.29883,484.94922 -398.23633,0 0,111.2168 398.23633,0 0,-111.2168 z"
-       id="path5106"
-       transform="translate(0,308.26772)"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#ffd5d5;fill-rule:evenodd;stroke:none;stroke-width:1.76300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 725.29883,466.39062 -398.23633,0 0,18.5586 398.23633,0 0,-18.5586 z"
-       id="path5117"
-       transform="translate(0,308.26772)"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:#e6e6e6;fill-rule:evenodd;stroke:none;stroke-width:1.76300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 327.0625,147.92969 0,299.73633 0,0.5957 0,18.1289 398.23633,0 0,-18.1289 0,-0.5957 0,-299.73633 -398.23633,0 z"
-       id="path5101"
-       inkscape:connector-curvature="0"
-       transform="translate(0,308.26772)" />
+    <g
+       id="g10787">
+      <path
+         inkscape:connector-curvature="0"
+         transform="translate(0,308.26772)"
+         id="path5106"
+         d="m 725.29883,484.94922 -398.23633,0 0,111.2168 398.23633,0 0,-111.2168 z"
+         style="fill:#b3b3b3;fill-rule:evenodd;stroke:none;stroke-width:1.76320064;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         transform="translate(0,308.26772)"
+         id="path5117"
+         d="m 725.29883,466.39062 -398.23633,0 0,18.5586 398.23633,0 0,-18.5586 z"
+         style="fill:#ffd5d5;fill-rule:evenodd;stroke:none;stroke-width:1.76300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <path
+         transform="translate(0,308.26772)"
+         inkscape:connector-curvature="0"
+         id="path5101"
+         d="m 327.0625,147.92969 0,299.73633 0,0.5957 0,18.1289 398.23633,0 0,-18.1289 0,-0.5957 0,-299.73633 -398.23633,0 z"
+         style="fill:#e6e6e6;fill-rule:evenodd;stroke:none;stroke-width:1.76300001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
     <flowRoot
        xml:space="preserve"
        id="flowRoot4162"
@@ -473,7 +476,31 @@
          x="629.06671"
          y="899.47369"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#333333">press <tspan
-   style="font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Oblique';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#333333"
+   style="font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Oblique';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ff0066"
    id="tspan8995">ESCAPE</tspan> to exit</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="446.35379"
+       y="620.44769"
+       id="text10757"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan10759"
+         x="446.35379"
+         y="620.44769"
+         style="fill:#ff0066">F1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="678.34106"
+       y="775.43372"
+       id="text10751"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan10753"
+         x="678.34106"
+         y="775.43372"
+         style="fill:#ff0066">ENTER</tspan></text>
   </g>
 </svg>
