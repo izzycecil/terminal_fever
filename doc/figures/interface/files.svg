@@ -49,9 +49,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8567357"
-     inkscape:cx="103.73413"
-     inkscape:cy="212.87"
+     inkscape:zoom="1.866066"
+     inkscape:cx="193.37251"
+     inkscape:cy="223.27008"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -262,7 +262,7 @@
          id="tspan5141"
          x="331.34052"
          y="786.68909"
-         style="font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Oblique';text-align:start;writing-mode:lr-tb;text-anchor:start">possible commands</tspan></text>
+         style="font-style:oblique;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Oblique';text-align:start;writing-mode:lr-tb;text-anchor:start">command info</tspan></text>
     <path
        style="fill:#aaccff;fill-opacity:0.99607843;stroke:none;stroke-width:1.76300001;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 173.0918 244.08789 L 60.4375 244.08789 L 60.4375 316.63477 L 173.0918 316.63477 L 173.0918 244.08789 z "
@@ -399,5 +399,26 @@
          x="336.9375"
          y="902.45142"
          id="tspan6583" /></text>
+    <rect
+       style="fill:#ccffaa;fill-opacity:1;stroke:#000000;stroke-width:1.02969229;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5119"
+       width="43.541782"
+       height="13.704325"
+       x="677.69232"
+       y="777.08545"
+       ry="3.1829681"
+       rx="2.9979556" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="684.37775"
+       y="787.57776"
+       id="text5108"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5110"
+         x="684.37775"
+         y="787.57776"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:125%;font-family:'DejaVu Sans Mono';-inkscape-font-specification:'DejaVu Sans Mono, Bold';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000">✓ USE</tspan></text>
   </g>
 </svg>
