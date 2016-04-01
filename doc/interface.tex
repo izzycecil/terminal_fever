@@ -1,0 +1,17 @@
+\subsection{Preview Window}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/interface/undo.eps}
+  \caption{A mockup of the preview window with undo option}
+  \label{fig:undo}
+\end{figure}
+
+In Figure \ref{fig:undo} we can see an example interface for the preview window
+for our terminal. After a command is entered, this shows the user what changes
+to their system will result if they choose to admit the command. This interface
+creates an escape hatch which allows the user to return the entire shell to the
+state before the previous command. The layout is designed with the idea of
+responsive disclosure in mind. The pane, which displays a list of information
+about the staged changes, will be shown only when that info is relevant to the
+user.
