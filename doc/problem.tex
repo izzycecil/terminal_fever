@@ -1,17 +1,20 @@
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/sketch.png}
+  \includegraphics[width=0.85\linewidth]{figures/sketch.png}
   \caption{A sketch of our problem design.}
   \label{fig:sketch}
 \end{figure}
 
 Shown in Figure (\ref{fig:sketch}) is the problem sketch for our project. The
 frames are color-coded according to the model-view-controller (MVC) architecture
-pattern: green is for model; blue is for view; red is for controller.
+design pattern: green for the model; blue for the view; red for the controller.
 
 The sketch begins with a user, of any experience level, who interacts with the
-system via keyboard and mouse. Their view into the system consists of a CLI
-window and a contextual information window.
+system via keyboard and mouse. The main user interface of the system is an
+ordinary command line window, which will read and execute commands. In addition,
+our program will have an adjacent contextual information window, which provides
+heads up information about the state of the system, and can preview the results
+of commands before they are run.
 
 A user's input in passed from the interface through the interaction engine. The
 interaction engine processes this text for command suggestions, autocompletion,
@@ -20,10 +23,9 @@ The OS's man pages, this package's built-in patterns, the user's history, and
 the current state of the shell are all used by the interaction engine for these
 features.
 
-This system has a two-step state design, consisting of an 'active' state and a
-'preview' state. For any command run, changes to the file system or to the shell
-state are staged, or saved, in the preview state. If the user approves of
+This system has a two-step state design, consisting of an ``active'' state and a
+``preview'' state. For any command run, changes to the file system or to the
+shell state are staged, or saved, in the preview state. If the user approves of
 whatever changes were made, then the preview state is flushed to the active
 state, which is synonymous with the actual files on disk and the actual shell
 environment variables.
-
