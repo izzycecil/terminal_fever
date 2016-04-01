@@ -7,7 +7,22 @@
   \label{fig:cmdinfo}
 \end{figure}
 
-Hey, lookit!
+Figure \ref{fig:cmdinfo} illustrates our idea for the autocomplete dialog. The
+user can access the dialog by tab-completing the command they are typing, or
+clicking on a the name of a file in the output of any command. The dialog box
+can show a list of possible commands, determining which suggestions are most
+likely based on command history, the current working context, or the type of the
+file to be acted on. The autocomplete open remains open, leaving the user a
+trail of ``breadcrumbs'' which can lead them back to other commands' information
+windows.
+
+The command info window is parsed from the man pages of the suggested commands,
+and the layout is right/left aligned to make it easier to read. The window is
+mainly a menu page for the particular command the user is interested in, but
+doubles as an input form for the CLI. The possible command line options that
+will appear in the documentation can be treated as form controls, (conceptually
+similar to checkboxes), which allow the user to interactively build commands by
+clicking or tabbing through.
 
 \subsection{Undo Window}
 
