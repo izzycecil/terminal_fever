@@ -27,6 +27,26 @@ will appear in the documentation can be treated as form controls, (conceptually
 similar to checkboxes), which allow the user to interactively build commands by
 clicking or tabbing through.
 
+\subsection{Automation Helper}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/interface/automation.eps}
+  \caption{An example use of the automation window}
+  \label{fig:autow}
+\end{figure}
+
+One of the main things that makes the command line powerful, and one of the
+hardest features to use effectively, is the ability to automate common system
+tasks. Figure \ref{fig:autow} shows an example interface for a feature which can
+guide users through the process of automating tasks. The interface makes use of
+the users command history to detect when the same command has been used several
+times in the row, and presents the user with a button to bring up the automation
+window \--- this follows from the concept of responsive enabling.
+
+The automation window is a sequence map that walks the user through the steps of
+creating a loop in their shell's language to repeat a task multiple times.
+
 \subsection{Undo Window}
 
 \begin{figure}[H]
