@@ -1,17 +1,40 @@
-\subsection{Preview Window}
+\subsection{Command Info}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/interface/files.eps}
+  \caption{A mockup of the autocomplete dialog with the command info window}
+  \label{fig:cmdinfo}
+\end{figure}
+
+Hey, lookit!
+
+\subsection{Undo Window}
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/interface/undo.eps}
-  \caption{A mockup of the preview window with undo option}
+  \caption{A mockup of the undo window with undo option}
   \label{fig:undo}
 \end{figure}
 
-In Figure \ref{fig:undo} we can see an example interface for the preview window
-for our terminal. After a command is entered, this shows the user what changes
-to their system will result if they choose to admit the command. This interface
-creates an escape hatch which allows the user to return the entire shell to the
-state before the previous command. The layout is designed with the idea of
-responsive disclosure in mind. The pane, which displays a list of information
-about the staged changes, will be shown only when that info is relevant to the
-user.
+In Figure \ref{fig:undo} we can see an example interface for the undo window for
+our terminal. After a command is entered that changes something, this shows the
+user exactly what changes have taken place, and makes it possible to undo the
+last set of changes. After any state-altering command is entered at the CLI, a
+button is appended to the command in the log which brings up the shown
+dialog. The same dialog can be made available from the heads-up display in the
+bottom, or the terminal can be configured to show the undo window after
+destructive commands by default.
+
+The point of this interface is to create an escape hatch to allow the user to
+return the entire system to the state before the previous command. This is an
+example of responsive disclosure, because the information is only made available
+to the user when they indicate that they want to know how to undo a command. The
+system is also inherently limited in that it can only undo a single command, so
+as more commands are entered the button should disappear from older commands that can no longer be undone. This follows the principle of responsive enabling.
+
+The undo button closes the pane by undoing the command, and pressing
+\texttt{ESC} simply returns the user to the normal context window without
+undoing anything. Both are examples of having a prominent ``done'' button, so
+the user knows how to tell the terminal they're done with the undo dialog.
