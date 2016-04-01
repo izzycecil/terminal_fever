@@ -1,0 +1,3 @@
+[submodule "src/jquery-console"]
+	path = src/jquery-console
+	url = git@github.com:chrisdone/jquery-console.git
