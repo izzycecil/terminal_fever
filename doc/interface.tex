@@ -1,3 +1,6 @@
+In this section we demo some of the interactive designs elements which we
+believe will be be important in realizing our vision for the final product.
+
 \subsection{Command Info}
 
 \begin{figure}[H]
@@ -47,9 +50,13 @@ return the entire system to the state before the previous command. This is an
 example of responsive disclosure, because the information is only made available
 to the user when they indicate that they want to know how to undo a command. The
 system is also inherently limited in that it can only undo a single command, so
-as more commands are entered the button should disappear from older commands that can no longer be undone. This follows the principle of responsive enabling.
+as more commands are entered the button should disappear from older commands
+that can no longer be undone. This follows the principle of responsive enabling.
 
 The undo button closes the pane by undoing the command, and pressing
 \texttt{ESC} simply returns the user to the normal context window without
 undoing anything. Both are examples of having a prominent ``done'' button, so
-the user knows how to tell the terminal they're done with the undo dialog.
+the user knows how to tell the terminal they're done with the undo dialog. The
+red color on the dialog window also serves as a visual warning to the user to
+indicate that what they are doing will ultimately result in a real change to the
+state of the system, to make them more likely to exercise proper caution.
