@@ -135,8 +135,11 @@ class Bar {
      * hidden.
      */
     static Button(text) {
-        if (text == null) Bar.button.css("visibility:hidden");
-        else Bar.button.val(text);
+        if (!text) Bar.button.css("visibility", "hidden");
+        else {
+            Bar.button.css("visibility", "visible");
+            Bar.button.val(text);
+        }
     }
 }
 
