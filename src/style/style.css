@@ -98,3 +98,13 @@ body {
 .color_neutral_d { background:#666666; }
 .color_neutral_l { background:#bbbbbb; }
 
+/* courtesy of http://stackoverflow.com/a/16012979 */
+#console div.jquery-console-focus span.jquery-console-cursor {
+  animation: blink-animation 1s steps(2, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
