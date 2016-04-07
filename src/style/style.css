@@ -89,16 +89,16 @@ body {
 }
 
 .color_warn_l { background:#ffd5d5; }
-.color_warn_d { background:#ff5555; }
+.color_warn_d { background:#ff5555; color: white }
 
 .color_info_l { background:#aaccff; }
-.color_info_d { background:#5577dd; }
+.color_info_d { background:#5577dd; color: white }
 
 .color_good_l { background:#ccffaa; }
-.color_good_d { background:#33bb33; }
+.color_good_d { background:#33bb33; color: white }
 
-.color_neutral_d { background:#555; }
 .color_neutral_l { background:#bbb; }
+.color_neutral_d { background:#555; color: white }
 
 /* courtesy of http://stackoverflow.com/a/16012979 */
 #console div.jquery-console-focus span.jquery-console-cursor {
