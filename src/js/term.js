@@ -112,6 +112,10 @@ function setMood(mood) {
     }
 }
 
+function setBarText(text) {
+    $("#bar-text").text(text);
+}
+
 function contextWindow(title, info) {
     if (!title) {
         $("#context").html("");
