@@ -16,16 +16,19 @@ our program will have an adjacent contextual information window, which provides
 heads up information about the state of the system, and can preview the results
 of commands before they are run.
 
-A user's input in passed from the interface through the interaction engine. The
+A user's input in passed from the interface to an interaction engine. The
 interaction engine processes this text for command suggestions, autocompletion,
-and automation, returning this information to the command line in the interface.
-The OS's man pages, this package's built-in patterns, the user's history, and
-the current state of the shell are all used by the interaction engine for these
-features.
+and automation, returning this information to the command line interface. The
+OS's man pages, the package's built-in patterns, the user's history, and the
+current state of the shell are all used by the interaction engine to
+intelligently provide these features.
 
-This system has a two-step state design, consisting of an ``active'' state and a
-``preview'' state. For any command run, changes to the file system or to the
-shell state are staged, or saved, in the preview state. If the user approves of
-whatever changes were made, then the preview state is flushed to the active
-state, which is synonymous with the actual files on disk and the actual shell
-environment variables.
+This system uses a two-step design to model the changes that the command line
+applies to the operating system. This allows us to provide an ``escape hatch''
+before running commands, which is important because it's possible for users to
+make destructive mistakes when using the command line! Every time a command is
+run, the changes to the filesystem or OS state are first staged in the ``preview
+state.'' The staged changes are visible to the user through the context window,
+where they can be approved or rejected. If the user approves of the action, then
+the preview state is flushed and the changes are sent to the ``active state,''
+which is synonymous with the actual underlying operating system.

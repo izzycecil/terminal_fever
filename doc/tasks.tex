@@ -31,79 +31,81 @@
 \emph{As any user, }
 \begin{itemize}
   \item I want to be able to copy and paste.
-  \item I want to be able to drag a link into my shell and have the file be added to the current directory.
+  \item I want to be able to drag a link into my shell and have the file be
+    added to the current directory.
   \item I want the system to learn about my most common tasks.
   \item I want to know what options are available to me for a given command.
   \item I want contextual information displayed to me when composing commands.
-  \item I want to view files in the current directory as I move through the system.
-  \item I want to be able to undo what I’ve done.
+  \item I want to view files in the current directory as I move through the
+    system.
+  \item I want to be able to undo what I've done.
 \end{itemize}
 
 \subsection{Hierarchical Analysis of Selected Tasks}
 \begin{enumerate}
-  \item As any user, I want to be able to undo what I’ve done.
+  \item As any user, I want to be able to undo what I've done.
   \begin{enumerate}
-    \item run a command
+    \item Run a command
     \begin{enumerate}
-      \item know what command to run
-      \item write the command
+      \item Know what command to run
+      \item Write the command
     \end{enumerate}
     \begin{enumerate}
-      \item understand the results of the command
+      \item Understand the results of the command
       \begin{enumerate}
-        \item view what files/directories/settings were changed
-        \item view how they were changed
+        \item View what files/directories/settings were changed
+        \item View how they were changed
       \end{enumerate}
     \end{enumerate}
-    \item undo a command
+    \item Undo a command
   \end{enumerate}
 
   \item As a beginner, I want to know what I can do with a file.
   \begin{enumerate}
-    \item specify a file
+    \item Specify a file
     \begin{enumerate}
-      \item see what files are in my current working directory
-      \item select one of those files
+      \item See what files are in my current working directory
+      \item Select one of those files
     \end{enumerate}
-    \item view the available commands
+    \item View the available commands
     \begin{enumerate}
-      \item view a list of what commands would be useful for that file
-      \item view what each command does
+      \item View a list of what commands would be useful for that file
+      \item View what each command does
     \end{enumerate}
-    \item run a command on the file
+    \item Run a command on the file
     \begin{enumerate}
-      \item select a command
+      \item Select a command
     \end{enumerate}
   \end{enumerate}
 
   \item As a casual user, I want to automate my workflow.
   \begin{enumerate}
-    \item specify a task which needs to be run many times
-    \item view suggestions on how to run that task
-    \item select an automation technique
+    \item Specify a task which needs to be run many times
+    \item View suggestions on how to run that task
+    \item Select an automation technique
   \end{enumerate}
 
-  \item 4. As a beginner, I want to know what the command is going to do.
+  \item As a beginner, I want to know what the command is going to do.
   \begin{enumerate}
-    \item specify a command
-    \item view that command’s effects
+    \item Specify a command
+    \item View that command’s effects
     \begin{enumerate}
-      \item view which files are going to be affected
-      \item view how those files are going to be affected
+      \item View which files are going to be affected
+      \item View how those files are going to be affected
     \end{enumerate}
-    \item chose whether to run the command or not
+    \item Chose whether to run the command or not
   \end{enumerate}
 
   \item As an expert user, I want heads-up information about my system as I use it.
   \begin{enumerate}
-    \item see what the state of my session is
+    \item See what the state of my session is
     \begin{enumerate}
-      \item view background jobs
-      \item view possible commands based on the current context
+      \item View background jobs
+      \item View possible commands based on the current context
       \begin{enumerate}
-        \item take local files into account
+        \item Take local files into account
       \end{enumerate}
-      \item view the ways the current session has been altered - non-normal
+      \item View the ways the current session has been altered \--- non-normal
       environment variables, virtual environments, et cetera.
     \end{enumerate}
   \end{enumerate}

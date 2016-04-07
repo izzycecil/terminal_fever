@@ -1,4 +1,4 @@
-For each of the main tasks provided in Section \ref{hierarch}, we analyze the
+For each of the main tasks provided in Section \ref{sec:tasks}, we analyze the
 ways in which these tasks could be actualized. Each actualization is represented
 with three separate diagrams showing the flow of actions.
 
@@ -26,7 +26,7 @@ results of their actions, and then chose whether or not to carry it out.
 
 A scheme that gives perhaps more undo ability (yet less pedagogical value) is
 the ability to brows the history of your commands and the states they
-represented. Figure \ref{figundob} shows such a scheme.
+represented. Figure \ref{fig:undob} shows such a scheme.
 
 \begin{figure}[H]
   \centering
@@ -36,7 +36,7 @@ represented. Figure \ref{figundob} shows such a scheme.
 \end{figure}
 
 Another common way to deal with this problem is the style that is used by the
-\emph{iPython} notebook --- displaying the whole command history, and allowing
+\emph{iPython} notebook \--- displaying the whole command history, and allowing
 the user to change the text of the commands that were previously entered. Figure
 \ref{fig:undoc} shows such a scheme.
 
@@ -52,13 +52,13 @@ provide the user with the knowledge of how to continue with their files.
   \label{fig:disca}
 \end{figure}
 
-In Figure \ref{figdisca} we present a model where first a file is selected. Once
+In Figure \ref{fig:disca} we present a model where first a file is selected. Once
 the selection has been made, the shell can provide a list of ``what to do next''
 options. This represents a more reverse polish style of shell navigation.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/alternatives/file_b.png}
+  \includegraphics[width=\linewidth]{figures/alternatives/file_b.png}
   \caption{A breakdown of the procedure for undoing actions.}
   \label{fig:discb}
 \end{figure}
@@ -74,7 +74,7 @@ with a list of actions.
   \label{fig:discc}
 \end{figure}
 
-Figure \ref{fig:discc} shows the simplest way to implement this feature --- a
+Figure \ref{fig:discc} shows the simplest way to implement this feature \--- a
 special command to ask ``what is the most common task to perform on this file
 type.''
 
@@ -93,10 +93,10 @@ their work.
   \label{fig:autoa}
 \end{figure}
 
-In Figure \ref{autoa} we show perhaps the most obvious way to perform this sort
-of automation --- detect repeated commands, and suggest an automation path (such
-as building a for loop). This will serve as a good, non-invasive method, that
-will alert the user of features of the shell.
+In Figure \ref{fig:autoa} we show perhaps the most obvious way to perform this
+sort of automation \--- detect repeated commands, and suggest an automation path
+(such as building a for loop). This will serve as a good, non-invasive method,
+that will alert the user of features of the shell.
 
 \begin{figure}[H]
   \centering
@@ -107,7 +107,7 @@ will alert the user of features of the shell.
 
 The user, however, could be provided with an ``automate'' command, prompting
 this system to provide automation suggestions. This would be an easier path to
-pursue, but leave more responsibility for the user. Figure \ref{autob} shows
+pursue, but leave more responsibility for the user. Figure \ref{fig:autob} shows
 such a scheme.
 
 \begin{figure}[H]
@@ -118,7 +118,7 @@ such a scheme.
 \end{figure}
 
 Finally, we could boil all automation commands down to batch processes on
-related files. Figure \ref{autoc} shows how the user may select related files,
+related files. Figure \ref{fig:autoc} shows how the user may select related files,
 and then build up a command to operate on all files.
 
 \subsection{Preview Command}
@@ -145,8 +145,8 @@ fluidly work in the shell, seeing results before they occur.
   \label{fig:prevb}
 \end{figure}
 
-Figure \ref{prevb} however would remove this as being the default behavior, and
-allow the users to request a preview. The rest of the workflow would remain
+Figure \ref{fig:prevb} however would remove this as being the default behavior,
+and allow the users to request a preview. The rest of the workflow would remain
 unchanged.
 
 \begin{figure}[H]
@@ -156,10 +156,10 @@ unchanged.
   \label{fig:prevc}
 \end{figure}
 
-Finally, Figure \ref{prevc} shows a case when previews are only used when the
-shell detects a chance will be made to any files (probably the time when users
-are most uncomfortable). This way the users are not constantly burdened with
-previews, and only shown then when they really matter.
+Finally, Figure \ref{fig:prevc} shows a case when previews are only used when
+the shell detects a chance will be made to any files (probably the time when
+users are most uncomfortable). This way the users are not constantly burdened
+with previews, and only shown then when they really matter.
 
 %%% Local Variables:
 %%% mode: latex
