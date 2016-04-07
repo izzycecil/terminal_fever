@@ -168,6 +168,8 @@ $(controller.typer).keydown(function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    controller.typer.consoleInsert(input[0]);
-    input = input.substring(1);
+    if (input != "") {
+        controller.typer.consoleInsert(input[0]);
+        input = input.substring(1);
+    }
 });
