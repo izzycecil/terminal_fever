@@ -112,11 +112,28 @@ body {
 .color_neutral_l { background:#bbb; }
 .color_neutral_d { background:#555; color: white }
 
-.context_window {
+#context {
     color:#fff;
-    font-family:monospace;
-    padding-left: 20px;
-    padding-top: 20px;
+    font-family: sans-serif;
+}
+
+#context table {
+    padding-top: 50px;
+    margin: auto;
+}
+
+#context ul {
+    padding: 20px;
+    margin: auto;
+}
+
+.cmd-left {
+    text-align: right;
+    font-weight: bold;
+}
+
+.cmd-right {
+    text-align: left;
 }
 
 /* courtesy of http://stackoverflow.com/a/16012979 */
