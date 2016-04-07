@@ -19,14 +19,17 @@ function rep(m, h){
  * in the simulation, a new step will be run.
  */
 function* scriptGen() {
+    Bar.Color(Bar.NEUTRAL);
+    Bar.Button();
+
     yield "# Let's learn to use the shell!";
     yield rep("", ":: Comment, not evaluated");
-    Bar.Color(Bar.NEUTRAL);
     contextWindow();
 
     yield "ls --get-money --get-paid";
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", ":: list directore contents");
     Bar.Color(Bar.INFO);
+    Bar.Text("ls options");
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-a, --all", "do not ignore entries starting with .");
@@ -35,6 +38,8 @@ function* scriptGen() {
     yield "rm -rvf f1.mp3";
     yield rep("removed 'f1.mp3' undo",":: remove files or directories : f1.mp3");
     Bar.Color(Bar.WARN);
+    Bar.Text("rm options");
+    Bar.Button("Undo");
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-r, -R, --recursive", "remove directories and their contents recursively");
@@ -44,14 +49,18 @@ function* scriptGen() {
     yield "mkdir music";
     yield rep("undo", ":: make directories : music");
     Bar.Color(Bar.WARN);
+    Bar.Text("mkdir options");
+    Bar.Button("Undo");
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-p, --parents", "no error if existing, make parent directories as needed");
     contextWindow("-v, --verbose", "print a message for each created directory");
 
     yield "mv -vi -t music *.mp3";
-    yield rep("'f1.mp3' -> 'music/f1.mp3'\n'f2.mp3' -> 'music/f2.mp3'\n'f3.mp3' -> 'music/f3.mp3' undo", ":: move (rename) files : *.mp3");
+    yield rep("'f1.mp3' -> 'music/f1.mp3'\n'f2.mp3' -> 'music/f2.mp3'\n'f3.mp3' -> 'music/f3.mp3' undo", ":: move (rename) files : f1.mp3 f2.mp3 f3.mp3");
     Bar.Color(Bar.WARN);
+    Bar.Text("mv options");
+    Bar.Button("Undo");
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-v, --verbose", "explain what is being done");
@@ -61,11 +70,14 @@ function* scriptGen() {
     yield "cd music";
     yield rep("", ":: change the working directory : music");
     Bar.Color(Bar.NEUTRAL);
+    Bar.Text("");
+    Bar.Button();
     contextWindow();
 
     yield "mplayer f3.mp3";
     yield rep("MPlayer SVN-r37379 (C) 2000-2015 MPlayer Team\n210 audio & 441 video codecs\ndo_connect: could not connect to socket\nconnect: No such file or directory\nFailed to open LIRC support. You will not be able to use your remote control.\n\nPlaying f3.mp3.\nlibavformat version 56.25.101 (internal)\nAudio only file format detected.\nLoad subtitles in ./\n==========================================================================\nOpening audio decoder: [mpg123] MPEG 1.0/2.0/2.5 layers I, II, III\nAUDIO: 44100 Hz, 2 ch, s16le, 256.0 kbit/18.14% (ratio: 32000->176400)\nSelected audio codec: [mpg123] afm: mpg123 (MPEG 1.0/2.0/2.5 layers I, II, III)\n==========================================================================\n[AO OSS] audio_setup: Can't open audio device /dev/dsp: No such file or directory\nAO: [alsa] 44100Hz 2ch s16le (2 bytes per sample)\nVideo: no video\nStarting playback...\nA:   2.3 (02.2) of 393.0 (06:33.0)  0.4%\n\nExiting... (End of file)", ":: movie player : f3.mp3")
     Bar.Color(Bar.INFO);
+    Bar.Text("mplayer options");
     contextWindow();
     contextWindow("-quiet", "Make console output less verbose");
     contextWindow("-really-quiet", "Display even less output and status messages than with -quiet");
