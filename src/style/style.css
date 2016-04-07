@@ -23,7 +23,7 @@ body {
     font-family:monospace;
 }
 #console div.jquery-console-focus span.jquery-console-cursor {
-    background:#fefefe;
+    background:#00ff00;
     color:#333;
     font-weight:bold
 }
