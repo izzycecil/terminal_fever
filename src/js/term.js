@@ -23,7 +23,7 @@ function* scriptGen() {
     yield "The story of the boy who cried 'I would like to use Unix, please.'";
     yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
 
-    Bar.color(Bar.WARN);
+    Bar.Color(Bar.WARN);
     contextWindow("[HEY LOUIS]", "I AM AN ARTIST");
     contextWindow("[WILL COLUMN THIS RESIZE?]", "ART ART ART");
     // 1) What am I looking at?
@@ -37,7 +37,7 @@ function* scriptGen() {
     contextWindow();
     contextWindow("[MY HANDS]", "ARE TYPING WORDS");
     contextWindow("[THIS]", "IS A NIGHTMARE");
-    Bar.color(Bar.INFO);
+    Bar.Color(Bar.INFO);
     // 4) There are a whole bunch of mp3 files.
     // 5) Listen to a file
     // * Your shell is busy playing a file. Click to stop
@@ -47,12 +47,12 @@ function* scriptGen() {
     yield " ";
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
 
-    Bar.color(Bar.GOOD);
+    Bar.Color(Bar.GOOD);
     // 6) Move a file to another directory
     yield " ";
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
 
-    Bar.color(Bar.NEUTRAL);
+    Bar.Color(Bar.NEUTRAL);
     // 7) Start to do it again
     // 8) Automation helper
     // 9) Show the results
@@ -97,7 +97,7 @@ class Bar {
         Bar.NEUTRAL = 3;
     }
 
-    static color(color) {
+    static Color(color) {
         // remove any current color
         Bar.bar.removeClass(Bar.colors);
         Bar.button.removeClass(Bar.colors);
@@ -124,9 +124,9 @@ class Bar {
         }
     }
 
-    static text(text) { Bar.text.text(text); }
+    static Text(text) { Bar.text.text(text); }
 
-    static button(text) {
+    static Button(text) {
         if (text == null) Bar.button.css("visibility:hidden");
         else Bar.button.val(text);
     }
