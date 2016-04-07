@@ -79,6 +79,9 @@ function* scriptGen() {
     // 15) back to playing music.
 }
 
+/*
+ * This class contains all of the state for the bar.
+ */
 class Bar {
     static init() {
         // string of all possible colors
@@ -87,18 +90,24 @@ class Bar {
                            color_good_l color_good_d \
                            color_neutral_l color_neutral_d";
 
+        // the dom items
         Bar.bar = $("#bar");
         Bar.text = $("#bar-text");
         Bar.button = $("#bar-button");
 
+        // the bar color schemes
         Bar.WARN = 0;
         Bar.INFO = 1;
         Bar.GOOD = 2;
         Bar.NEUTRAL = 3;
     }
 
+    /*
+     * Set the bar color, where color is one of
+     * Bar.WARN, Bar.INFO, Bar.GOOD, or Bar.NEUTRAL
+     */
     static Color(color) {
-        // remove any current color
+        // remove any current color class
         Bar.bar.removeClass(Bar.colors);
         Bar.button.removeClass(Bar.colors);
 
@@ -124,14 +133,22 @@ class Bar {
         }
     }
 
+    /*
+     * Set the bar text.
+     */
     static Text(text) { Bar.text.text(text); }
 
+    /*
+     * Set the button text. If text is not given, then the button will be made
+     * hidden.
+     */
     static Button(text) {
         if (text == null) Bar.button.css("visibility:hidden");
         else Bar.button.val(text);
     }
 }
 
+// setup bar static variables
 Bar.init()
 
 function contextWindow(title, info) {
