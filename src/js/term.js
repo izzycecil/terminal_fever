@@ -21,6 +21,8 @@ function rep(m, h){
 function* scriptGen() {
     // The story of the boy who cried "I would like to use Unix, please."
     yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
+    setMood("WARN");
+    contextWindow("I AM AN ARTIST");
     // 1) What am I looking at?
     // 2) Context bar lists files, and gives instructions. (Elaborate later)
     // * "Try finding the file you want, or making a new file"
@@ -28,12 +30,16 @@ function* scriptGen() {
     // * "This is how to navigate"
     // 3) My file is on the Desktop
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    setMood("INFO");
+    contextWindow("ART ART ART");
     // 4) There are a whole bunch of mp3 files.
     // 5) Listen to a file
     // * Your shell is busy playing a file. Click to stop
     yield rep("Playing File","Your shell is busy playing a file. Click to stop.");
+    setMood("GOOD");
     // 6) Move a file to another directory
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    setMood("NEUTRAL");
     // 7) Start to do it again
     // 8) Automation helper
     // 9) Show the results
@@ -82,6 +88,19 @@ function setMood(mood) {
             $("#bar_button").addClass("color_neutral_l")
             break;
     }
+}
+
+function contextWindow(info) {
+    var table = $('<table></table>').addClass("context_window");
+    table = table.css("padding-left", "20px");
+    table = table.css("padding-top", "20px");
+
+    var row = $('<tr></tr>');
+    row = row.append($('<td></td>').css("align", "right").text("[INFO] "));
+    row = row.append($('<td></td>').css("align", "left").text(": " + info));
+    table.append(row);
+
+    $("#context").html(table);
 }
 
 var gen = scriptGen();

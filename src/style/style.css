@@ -100,6 +100,13 @@ body {
 .color_neutral_l { background:#bbb; }
 .color_neutral_d { background:#555; color: white }
 
+.context_window {
+    color:#fff;
+    font-family:monospace;
+    padding-top: 50px;
+    padding-left: 30px;
+}
+
 /* courtesy of http://stackoverflow.com/a/16012979 */
 #console div.jquery-console-focus span.jquery-console-cursor {
   animation: blink-animation 1s steps(2, start) infinite;
@@ -109,4 +116,3 @@ body {
     visibility: hidden;
   }
 }
-
