@@ -21,6 +21,8 @@ function rep(m, h){
 function* scriptGen() {
     Bar.Color(Bar.NEUTRAL);
     Bar.Button();
+    var files = ["Code", "Desktop", "Documents", "Downloads", "Music", "Pictures", "sync"];
+    Context.Files(files);
 
     yield "# Let's learn to use the shell!";
     yield rep("", ":: Comment, not evaluated");
@@ -176,7 +178,7 @@ class Context {
         Context.div.html("");
 
         var content = "<ul>";
-        for (file in files) {
+        for (var file of files) {
             content += "<li>" + file + "</li>";
         }
         content += "</ul>"
