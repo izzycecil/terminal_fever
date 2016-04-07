@@ -32,7 +32,7 @@ function* scriptGen() {
     // * "You are here!"
     // * "This is how to navigate"
     // 3) My file is on the Desktop
-    yield " ";
+    yield "ls --get-money --get-paid";
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
     contextWindow();
     contextWindow("[MY HANDS]", "ARE TYPING WORDS");
@@ -168,7 +168,7 @@ $(controller.typer).keydown(function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    if (input != "") {
+    if (input != "" && e.which != 13) {
         controller.typer.consoleInsert(input[0]);
         input = input.substring(1);
     }
