@@ -158,6 +158,19 @@ class Bar {
 // setup bar static variables
 Bar.init()
 
+class Context {
+    static init() {
+        Context.context = $("#context")
+    }
+
+    static Command(options) {
+
+    }
+
+    static Files(files) {
+    }
+}
+
 function contextWindow(title, info) {
     if (!title) {
         $("#context").html("");
