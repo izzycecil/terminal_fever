@@ -3,7 +3,7 @@ div.console {
     bottom: 260px;
 
     font-size: 14px;
-    background:#333;
+    background:#b3b3b3;
 }
 div.console div.jquery-console-inner {
     box-sizing: border-box;
@@ -46,13 +46,13 @@ div.console span.jquery-console-prompt-label {
     bottom: 210px;
     height: 50px;
 
-    background:#444;
+    background:#aaccff;
 }
 #context {
     bottom: 10px;
     height: 200px;
 
-    background:#666;
+    background:#333;
 }
 
 .floating {
