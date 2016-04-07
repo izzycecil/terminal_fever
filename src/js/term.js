@@ -19,64 +19,56 @@ function rep(m, h){
  * in the simulation, a new step will be run.
  */
 function* scriptGen() {
-    // The story of the boy who cried "I would like to use Unix, please."
-    yield "The story of the boy who cried 'I would like to use Unix, please.'";
-    yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
-
-    Bar.Color(Bar.WARN);
-    contextWindow("[HEY LOUIS]", "I AM AN ARTIST");
-    contextWindow("[WILL COLUMN THIS RESIZE?]", "ART ART ART");
-    // 1) What am I looking at?
-    // 2) Context bar lists files, and gives instructions. (Elaborate later)
-    // * "Try finding the file you want, or making a new file"
-    // * "You are here!"
-    // * "This is how to navigate"
-    // 3) My file is on the Desktop
-    yield "ls --get-money --get-paid";
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-    contextWindow();
-    contextWindow("[MY HANDS]", "ARE TYPING WORDS");
-    contextWindow("[THIS]", "IS A NIGHTMARE");
-    Bar.Color(Bar.INFO);
-    // 4) There are a whole bunch of mp3 files.
-    // 5) Listen to a file
-    // * Your shell is busy playing a file. Click to stop
-    yield " ";
-    yield rep("Playing File","Your shell is busy playing a file. Click to stop.");
-    // 6) Move a file to another directory
-    yield " ";
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-
-    Bar.Color(Bar.GOOD);
-    // 6) Move a file to another directory
-    yield " ";
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-
+    yield "# Let's learn to use the shell!";
+    yield rep("", ":: Comment, not evaluated");
     Bar.Color(Bar.NEUTRAL);
-    // 7) Start to do it again
-    // 8) Automation helper
-    // 9) Show the results
-    yield " ";
-    yield rep("", "No files in the current directory.");
-    // 10) accidentally delete a file
+    contextWindow();
 
-    yield " ";
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    yield "ls --get-money --get-paid";
+    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", ":: list directore contents");
+    Bar.Color(Bar.INFO);
+    contextWindow();
+    // contextWindow("OPTIONS", "");
+    contextWindow("-a, --all", "do not ignore entries starting with .");
+    contextWindow("-l", "use a long listing format");
 
-    yield " ";
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. undo");
+    yield "rm -rvf f1.mp3";
+    yield rep("removed 'f1.mp3' undo",":: remove files or directories : f1.mp3");
+    Bar.Color(Bar.WARN);
+    contextWindow();
+    // contextWindow("OPTIONS", "");
+    contextWindow("-r, -R, --recursive", "remove directories and their contents recursively");
+    contextWindow("-v, --verbose", "explain what is being done");
+    contextWindow("-f, --force", "ignore nonexistent files and arguments, never prompt");
 
-    // 11) be presented the undo thing
-    yield " ";
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-    // 12) go to python directory
-    yield " ";
-    yield rep("myfile.py", "These are your current files.");
-    // 13) lint python file
-    yield " ";
-    yield rep("myfile.py", "These are your current files. undo");
-    // 14) be presented with diff, and asked if we should undo
-    // 15) back to playing music.
+    yield "mkdir music";
+    yield rep("undo", ":: make directories : music");
+    Bar.Color(Bar.WARN);
+    contextWindow();
+    // contextWindow("OPTIONS", "");
+    contextWindow("-p, --parents", "no error if existing, make parent directories as needed");
+    contextWindow("-v, --verbose", "print a message for each created directory");
+
+    yield "mv -vi -t music *.mp3";
+    yield rep("'f1.mp3' -> 'music/f1.mp3'\n'f2.mp3' -> 'music/f2.mp3'\n'f3.mp3' -> 'music/f3.mp3' undo", ":: move (rename) files : *.mp3");
+    Bar.Color(Bar.WARN);
+    contextWindow();
+    // contextWindow("OPTIONS", "");
+    contextWindow("-v, --verbose", "explain what is being done");
+    contextWindow("-i, --interactive", "prompt before overwrite");
+    contextWindow("-t, --target-directory=\"music\"", "move all SOURCE arguments into \"music\"");
+
+    yield "cd music";
+    yield rep("", ":: change the working directory : music");
+    Bar.Color(Bar.NEUTRAL);
+    contextWindow();
+
+    yield "mplayer f3.mp3";
+    yield rep("MPlayer SVN-r37379 (C) 2000-2015 MPlayer Team\n210 audio & 441 video codecs\ndo_connect: could not connect to socket\nconnect: No such file or directory\nFailed to open LIRC support. You will not be able to use your remote control.\n\nPlaying f3.mp3.\nlibavformat version 56.25.101 (internal)\nAudio only file format detected.\nLoad subtitles in ./\n==========================================================================\nOpening audio decoder: [mpg123] MPEG 1.0/2.0/2.5 layers I, II, III\nAUDIO: 44100 Hz, 2 ch, s16le, 256.0 kbit/18.14% (ratio: 32000->176400)\nSelected audio codec: [mpg123] afm: mpg123 (MPEG 1.0/2.0/2.5 layers I, II, III)\n==========================================================================\n[AO OSS] audio_setup: Can't open audio device /dev/dsp: No such file or directory\nAO: [alsa] 44100Hz 2ch s16le (2 bytes per sample)\nVideo: no video\nStarting playback...\nA:   2.3 (02.2) of 393.0 (06:33.0)  0.4%\n\nExiting... (End of file)", ":: movie player : f3.mp3")
+    Bar.Color(Bar.INFO);
+    contextWindow();
+    contextWindow("-quiet", "Make console output less verbose");
+    contextWindow("-really-quiet", "Display even less output and status messages than with -quiet");
 }
 
 /*
