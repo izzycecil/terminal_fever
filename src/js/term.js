@@ -23,7 +23,7 @@ function* scriptGen() {
     yield "The story of the boy who cried 'I would like to use Unix, please.'";
     yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
 
-    setMood("WARN");
+    Bar.color(Bar.WARN);
     contextWindow("[HEY LOUIS]", "I AM AN ARTIST");
     contextWindow("[WILL COLUMN THIS RESIZE?]", "ART ART ART");
     // 1) What am I looking at?
@@ -37,7 +37,7 @@ function* scriptGen() {
     contextWindow();
     contextWindow("[MY HANDS]", "ARE TYPING WORDS");
     contextWindow("[THIS]", "IS A NIGHTMARE");
-    setMood("INFO");
+    Bar.color(Bar.INFO);
     // 4) There are a whole bunch of mp3 files.
     // 5) Listen to a file
     // * Your shell is busy playing a file. Click to stop
@@ -47,12 +47,12 @@ function* scriptGen() {
     yield " ";
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
 
-    setMood("GOOD");
+    Bar.color(Bar.GOOD);
     // 6) Move a file to another directory
     yield " ";
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
 
-    setMood("NEUTRAL");
+    Bar.color(Bar.NEUTRAL);
     // 7) Start to do it again
     // 8) Automation helper
     // 9) Show the results
@@ -79,42 +79,60 @@ function* scriptGen() {
     // 15) back to playing music.
 }
 
-// string of all possible colors
-var COLORS = "color_warn_l color_warn_d \
-              color_info_l color_info_d \
-              color_good_l color_good_d \
-              color_neutral_l color_neutral_d";
+class Bar {
+    static init() {
+        // string of all possible colors
+        Bar.colors = "color_warn_l color_warn_d \
+                           color_info_l color_info_d \
+                           color_good_l color_good_d \
+                           color_neutral_l color_neutral_d";
 
-function setMood(mood) {
-    // remove any current color
-    $("#bar").removeClass(COLORS);
-    $("#bar_button").removeClass(COLORS);
+        Bar.bar = $("#bar");
+        Bar.text = $("#bar-text");
+        Bar.button = $("#bar-button");
 
-    // set new color
-    switch (mood) {
-        case "WARN":
-            $("#bar").addClass("color_warn_l");
-            $("#bar_button").addClass("color_warn_d");
-            break;
-        case "INFO":
-            $("#bar").addClass("color_info_l");
-            $("#bar_button").addClass("color_info_d");
-            break;
-        case "GOOD":
-            $("#bar").addClass("color_good_l");
-            $("#bar_button").addClass("color_good_d");
-            break;
-        case "NEUTRAL":
-        default:
-            $("#bar").addClass("color_neutral_d");
-            $("#bar_button").addClass("color_neutral_l");
-            break;
+        Bar.WARN = 0;
+        Bar.INFO = 1;
+        Bar.GOOD = 2;
+        Bar.NEUTRAL = 3;
+    }
+
+    static color(color) {
+        // remove any current color
+        Bar.bar.removeClass(Bar.colors);
+        Bar.button.removeClass(Bar.colors);
+
+        // set new color
+        switch (color) {
+            case Bar.WARN:
+                Bar.bar.addClass("color_warn_l");
+                Bar.button.addClass("color_warn_d");
+                break;
+            case Bar.INFO:
+                Bar.bar.addClass("color_info_l");
+                Bar.button.addClass("color_info_d");
+                break;
+            case Bar.GOOD:
+                Bar.bar.addClass("color_good_l");
+                Bar.button.addClass("color_good_d");
+                break;
+            case Bar.NEUTRAL:
+            default:
+                Bar.bar.addClass("color_neutral_d");
+                Bar.button.addClass("color_neutral_l");
+                break;
+        }
+    }
+
+    static text(text) { Bar.text.text(text); }
+
+    static button(text) {
+        if (text == null) Bar.button.css("visibility:hidden");
+        else Bar.button.val(text);
     }
 }
 
-function setBarText(text) {
-    $("#bar-text").text(text);
-}
+Bar.init()
 
 function contextWindow(title, info) {
     if (!title) {
