@@ -20,7 +20,7 @@ function rep(m, h){
  */
 function* scriptGen() {
     // The story of the boy who cried "I would like to use Unix, please."
-    yield rep("This \n \n \n undo is a test with html", "<b>GET FUCKED</b>");
+    yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
     // 1) What am I looking at?
     // 2) Context bar lists files, and gives instructions. (Elaborate later)
     // * "Try finding the file you want, or making a new file"
@@ -40,13 +40,13 @@ function* scriptGen() {
     yield rep("", "No files in the current directory.");
     // 10) accidentally delete a file
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. UNDO?");
+    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. undo");
     // 11) be presented the undo thing
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
     // 12) go to python directory
     yield rep("myfile.py", "These are your current files.");
     // 13) lint python file
-    yield rep("myfile.py", "These are your current files. UNDO?");
+    yield rep("myfile.py", "These are your current files. undo");
     // 14) be presented with diff, and asked if we should undo
     // 15) back to playing music.
 }
