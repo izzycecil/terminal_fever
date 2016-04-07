@@ -103,8 +103,8 @@ body {
 .context_window {
     color:#fff;
     font-family:monospace;
-    padding-top: 50px;
-    padding-left: 30px;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 /* courtesy of http://stackoverflow.com/a/16012979 */
