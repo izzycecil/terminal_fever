@@ -21,12 +21,12 @@ function rep(m, h){
 function* scriptGen() {
     yield "# Let's learn to use the shell!";
     yield rep("", ":: Comment, not evaluated");
-    setMood("NEUTRAL");
+    Bar.Color(Bar.NEUTRAL);
     contextWindow();
 
     yield "ls --get-money --get-paid";
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", ":: list directore contents");
-    setMood("INFO");
+    Bar.Color(Bar.INFO);
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-a, --all", "do not ignore entries starting with .");
@@ -34,7 +34,7 @@ function* scriptGen() {
 
     yield "rm -rvf f1.mp3";
     yield rep("removed 'f1.mp3' undo",":: remove files or directories : f1.mp3");
-    setMood("WARN");
+    Bar.Color(Bar.WARN);
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-r, -R, --recursive", "remove directories and their contents recursively");
@@ -43,7 +43,7 @@ function* scriptGen() {
 
     yield "mkdir music";
     yield rep("undo", ":: make directories : music");
-    setMood("WARN");
+    Bar.Color(Bar.WARN);
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-p, --parents", "no error if existing, make parent directories as needed");
@@ -51,7 +51,7 @@ function* scriptGen() {
 
     yield "mv -vi -t music *.mp3";
     yield rep("'f1.mp3' -> 'music/f1.mp3'\n'f2.mp3' -> 'music/f2.mp3'\n'f3.mp3' -> 'music/f3.mp3' undo", ":: move (rename) files : *.mp3");
-    setMood("WARN");
+    Bar.Color(Bar.WARN);
     contextWindow();
     // contextWindow("OPTIONS", "");
     contextWindow("-v, --verbose", "explain what is being done");
@@ -59,50 +59,72 @@ function* scriptGen() {
     contextWindow("-t, --target-directory=\"music\"", "move all SOURCE arguments into \"music\"");
 
     yield "cd music";
-    yield rep("", "No files in the current directory.");
-    setMood("NEUTRAL");
+    yield rep("", ":: change the working directory : music");
+    Bar.Color(Bar.NEUTRAL);
     contextWindow();
 
     yield "mplayer f3.mp3";
     yield rep("MPlayer SVN-r37379 (C) 2000-2015 MPlayer Team\n210 audio & 441 video codecs\ndo_connect: could not connect to socket\nconnect: No such file or directory\nFailed to open LIRC support. You will not be able to use your remote control.\n\nPlaying f3.mp3.\nlibavformat version 56.25.101 (internal)\nAudio only file format detected.\nLoad subtitles in ./\n==========================================================================\nOpening audio decoder: [mpg123] MPEG 1.0/2.0/2.5 layers I, II, III\nAUDIO: 44100 Hz, 2 ch, s16le, 256.0 kbit/18.14% (ratio: 32000->176400)\nSelected audio codec: [mpg123] afm: mpg123 (MPEG 1.0/2.0/2.5 layers I, II, III)\n==========================================================================\n[AO OSS] audio_setup: Can't open audio device /dev/dsp: No such file or directory\nAO: [alsa] 44100Hz 2ch s16le (2 bytes per sample)\nVideo: no video\nStarting playback...\nA:   2.3 (02.2) of 393.0 (06:33.0)  0.4%\n\nExiting... (End of file)", ":: movie player : f3.mp3")
-    setMood("INFO");
+    Bar.Color(Bar.INFO);
     contextWindow();
     contextWindow("-quiet", "Make console output less verbose");
     contextWindow("-really-quiet", "Display even less output and status messages than with -quiet");
 }
 
-// string of all possible colors
-var COLORS = "color_warn_l color_warn_d \
-              color_info_l color_info_d \
-              color_good_l color_good_d \
-              color_neutral_l color_neutral_d";
+class Bar {
+    static init() {
+        // string of all possible colors
+        Bar.colors = "color_warn_l color_warn_d \
+                           color_info_l color_info_d \
+                           color_good_l color_good_d \
+                           color_neutral_l color_neutral_d";
 
-function setMood(mood) {
-    // remove any current color
-    $("#bar").removeClass(COLORS);
-    $("#bar_button").removeClass(COLORS);
+        Bar.bar = $("#bar");
+        Bar.text = $("#bar-text");
+        Bar.button = $("#bar-button");
 
-    // set new color
-    switch (mood) {
-        case "WARN":
-            $("#bar").addClass("color_warn_l");
-            $("#bar_button").addClass("color_warn_d");
-            break;
-        case "INFO":
-            $("#bar").addClass("color_info_l");
-            $("#bar_button").addClass("color_info_d");
-            break;
-        case "GOOD":
-            $("#bar").addClass("color_good_l");
-            $("#bar_button").addClass("color_good_d");
-            break;
-        case "NEUTRAL":
-        default:
-            $("#bar").addClass("color_neutral_d");
-            $("#bar_button").addClass("color_neutral_l");
-            break;
+        Bar.WARN = 0;
+        Bar.INFO = 1;
+        Bar.GOOD = 2;
+        Bar.NEUTRAL = 3;
+    }
+
+    static Color(color) {
+        // remove any current color
+        Bar.bar.removeClass(Bar.colors);
+        Bar.button.removeClass(Bar.colors);
+
+        // set new color
+        switch (color) {
+            case Bar.WARN:
+                Bar.bar.addClass("color_warn_l");
+                Bar.button.addClass("color_warn_d");
+                break;
+            case Bar.INFO:
+                Bar.bar.addClass("color_info_l");
+                Bar.button.addClass("color_info_d");
+                break;
+            case Bar.GOOD:
+                Bar.bar.addClass("color_good_l");
+                Bar.button.addClass("color_good_d");
+                break;
+            case Bar.NEUTRAL:
+            default:
+                Bar.bar.addClass("color_neutral_d");
+                Bar.button.addClass("color_neutral_l");
+                break;
+        }
+    }
+
+    static Text(text) { Bar.text.text(text); }
+
+    static Button(text) {
+        if (text == null) Bar.button.css("visibility:hidden");
+        else Bar.button.val(text);
     }
 }
+
+Bar.init()
 
 function contextWindow(title, info) {
     if (!title) {
