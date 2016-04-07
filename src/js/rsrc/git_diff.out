@@ -1,0 +1,29 @@
+jesse@AsusToshiba:~/Code/python_demo|master⚡
+⇒  git --no-pager diff demo.py
+diff --git a/demo.py b/demo.py
+index 6a4afde..c07e8bd 100644
+--- a/demo.py
++++ b/demo.py
+@@ -3,4 +3,21 @@
+ def factorial(n):
+     if n == 0:
+         return 1
++
+     return n * factorial(n - 1)
++
++def fibonacci(n):
++    if (n <= 1):
++        return 1
++
++    return fibonacci(n - 1) + fibonacci(n - 2)
++
++def quicksort(ls):
++    if len(ls) <= 1:
++        return ls
++
++    pivot = ls[0]
++    small = [x for x in ls[1:] if x <= pivot]
++    big = [x for x in ls[1:] if x > pivot]
++
++    return quicksort(small) + pivot + quicksort(big)
+

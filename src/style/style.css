@@ -49,9 +49,8 @@ body {
 #bar {
     bottom: 210px;
     height: 50px;
-
-    background:#aaccff;
 }
+
 #context {
     bottom: 10px;
     height: 200px;
@@ -70,4 +69,15 @@ body {
     margin-right: auto;
     max-width: 700px;
 }
+
+.color_warn_l { background:#ffd5d5; }
+.color_warn_d { background:#ff5555; }
+
+.color_info_l { background:#aaccff; }
+.color_info_d { background:#80b3ff; }
+
+.color_good_l { background:#ccffaa; }
+.color_good_d { background:#b3ff80; }
+
+.color_neutral { background:#666666; }
 
