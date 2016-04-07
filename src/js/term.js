@@ -20,7 +20,9 @@ function rep(m, h){
  */
 function* scriptGen() {
     // The story of the boy who cried "I would like to use Unix, please."
+    yield "The story of the boy who cried 'I would like to use Unix, please.'";
     yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
+    yield " ";
     // 1) What am I looking at?
     // 2) Context bar lists files, and gives instructions. (Elaborate later)
     // * "Try finding the file you want, or making a new file"
@@ -28,25 +30,35 @@ function* scriptGen() {
     // * "This is how to navigate"
     // 3) My file is on the Desktop
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    yield " ";
     // 4) There are a whole bunch of mp3 files.
     // 5) Listen to a file
     // * Your shell is busy playing a file. Click to stop
     yield rep("Playing File","Your shell is busy playing a file. Click to stop.");
+    yield " ";
     // 6) Move a file to another directory
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    yield " ";
     // 7) Start to do it again
     // 8) Automation helper
     // 9) Show the results
     yield rep("", "No files in the current directory.");
+    yield " ";
     // 10) accidentally delete a file
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    yield " ";
+
     yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. undo");
+    yield " ";
     // 11) be presented the undo thing
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+    yield " ";
     // 12) go to python directory
     yield rep("myfile.py", "These are your current files.");
+    yield " ";
     // 13) lint python file
     yield rep("myfile.py", "These are your current files. undo");
+    yield " ";
     // 14) be presented with diff, and asked if we should undo
     // 15) back to playing music.
 }
@@ -86,6 +98,7 @@ function setMood(mood) {
 
 var gen = scriptGen();
 var container = $('#console');
+var input = gen.next().value;
 
 var controller = container.console({
     welcomeMessage : '',
@@ -99,8 +112,8 @@ var controller = container.console({
      * the script is being followed.
      */
     commandValidate:function(line){
-        if (line == "") return false;
-        else return true;
+        if (input == "") return true;
+        else return false;
     },
 
     /*
@@ -108,6 +121,22 @@ var controller = container.console({
      * script. This generator may have side-effects.
      */
     commandHandle:function(line){
-        return gen.next().value;
+        var next = gen.next().value;
+        input = gen.next().value;
+        return next;
     }
 });
+
+
+/*
+ * This grabs all keypresses, and passes them to jquery-term for the
+ * 'hacker-typer' effect.
+ */
+$(controller.typer).keydown(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    controller.typer.consoleInsert(input[0]);
+    input = input.substring(1);
+});
+
