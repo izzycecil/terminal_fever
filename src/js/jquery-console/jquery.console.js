@@ -823,7 +823,8 @@
   // Simple utility for printing messages
   $.fn.filledText = function(txt){
     $(this).text(txt);
-    $(this).html($(this).html().replace(/\t/g, '&nbsp;&nbsp;').replace(/\n/g,'<br/>'));
+      $(this).html($(this).html().replace(/\t/g, '&nbsp;&nbsp;')
+                   .replace(/\n/g,'<br/>').replace(/undo/g,'<marquee>UNDO</marquee>'));
     return this;
   };
 
