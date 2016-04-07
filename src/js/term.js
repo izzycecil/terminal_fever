@@ -1,8 +1,9 @@
 /*
  * Taken from the jquery-console ReadMe.md
  */
-var container = $('<div class="console">');
-$('body').append(container);
+// var container = $('<div class="console">');
+var container = $('.console');
+// $('body').append(container);
 var controller = container.console({
   promptLabel: 'Demo> ',
   commandValidate:function(line){
