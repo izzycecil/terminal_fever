@@ -1,12 +1,17 @@
 div.console {
-    font-size: 14px
+    top: 10px;
+    bottom: 260px;
+
+    font-size: 14px;
+    background:#333;
 }
 div.console div.jquery-console-inner {
+    box-sizing: border-box;
+
     width:100%;
     height:100%;
-    background:#333;
-    padding:0.5em;
-    overflow:auto
+    padding:15px;
+    overflow:hidden;
 }
 div.console div.jquery-console-prompt-box {
     color:#fff;
@@ -36,3 +41,29 @@ div.console div.jquery-console-message-type {
 div.console span.jquery-console-prompt-label {
     font-weight:bold
 }
+
+#bar {
+    bottom: 210px;
+    height: 50px;
+
+    background:#444;
+}
+#context {
+    bottom: 10px;
+    height: 200px;
+
+    background:#666;
+}
+
+.floating {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
