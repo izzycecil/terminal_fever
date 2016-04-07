@@ -51,6 +51,39 @@ function* scriptGen() {
     // 15) back to playing music.
 }
 
+// string of all possible colors
+var COLORS = "color_warn_l color_warn_d \
+              color_info_l color_info_d \
+              color_good_l color_good_d \
+              color_neutral_l color_neutral_d"
+
+function setMood(mood) {
+    // remove any current color
+    $("#bar").removeClass(COLORS)
+    $("#bar_button").removeClass(COLORS)
+
+    // set new color
+    switch (mood) {
+        case "WARN":
+            $("#bar").addClass("color_warn_l")
+            $("#bar_button").addClass("color_warn_d")
+            break;
+        case "INFO":
+            $("#bar").addClass("color_info_l")
+            $("#bar_button").addClass("color_info_d")
+            break;
+        case "GOOD":
+            $("#bar").addClass("color_good_l")
+            $("#bar_button").addClass("color_good_d")
+            break;
+        case "NEUTRAL":
+        default:
+            $("#bar").addClass("color_neutral_d")
+            $("#bar_button").addClass("color_neutral_l")
+            break;
+    }
+}
+
 var gen = scriptGen();
 var container = $('#console');
 
