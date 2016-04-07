@@ -22,43 +22,57 @@ function* scriptGen() {
     // The story of the boy who cried "I would like to use Unix, please."
     yield "The story of the boy who cried 'I would like to use Unix, please.'";
     yield rep("This undo is a test with html", "<b>GET FUCKED</b>");
-    yield " ";
+
+    setMood("WARN");
+    contextWindow("I AM AN ARTIST");
     // 1) What am I looking at?
     // 2) Context bar lists files, and gives instructions. (Elaborate later)
     // * "Try finding the file you want, or making a new file"
     // * "You are here!"
     // * "This is how to navigate"
     // 3) My file is on the Desktop
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
     yield " ";
+    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+
+    setMood("INFO");
+    contextWindow("ART ART ART");
     // 4) There are a whole bunch of mp3 files.
     // 5) Listen to a file
     // * Your shell is busy playing a file. Click to stop
+    yield " ";
     yield rep("Playing File","Your shell is busy playing a file. Click to stop.");
-    yield " ";
     // 6) Move a file to another directory
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
     yield " ";
+    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+
+    setMood("GOOD");
+    // 6) Move a file to another directory
+    yield " ";
+    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+
+    setMood("NEUTRAL");
     // 7) Start to do it again
     // 8) Automation helper
     // 9) Show the results
+    yield " ";
     yield rep("", "No files in the current directory.");
-    yield " ";
     // 10) accidentally delete a file
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
-    yield " ";
 
-    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. undo");
     yield " ";
-    // 11) be presented the undo thing
     yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
+
     yield " ";
+    yield rep("f2.mp3   f3.mp3   f4.mp3", "These are your current files. undo");
+
+    // 11) be presented the undo thing
+    yield " ";
+    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", "These are your current files.");
     // 12) go to python directory
+    yield " ";
     yield rep("myfile.py", "These are your current files.");
-    yield " ";
     // 13) lint python file
-    yield rep("myfile.py", "These are your current files. undo");
     yield " ";
+    yield rep("myfile.py", "These are your current files. undo");
     // 14) be presented with diff, and asked if we should undo
     // 15) back to playing music.
 }
@@ -94,6 +108,19 @@ function setMood(mood) {
             $("#bar_button").addClass("color_neutral_l")
             break;
     }
+}
+
+function contextWindow(info) {
+    var table = $('<table></table>').addClass("context_window");
+    table = table.css("padding-left", "20px");
+    table = table.css("padding-top", "20px");
+
+    var row = $('<tr></tr>');
+    row = row.append($('<td></td>').css("align", "right").text("[INFO] "));
+    row = row.append($('<td></td>').css("align", "left").text(": " + info));
+    table.append(row);
+
+    $("#context").html(table);
 }
 
 var gen = scriptGen();
