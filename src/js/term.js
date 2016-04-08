@@ -58,7 +58,7 @@ function* scriptGen() {
     yield rep("removed 'index.md' UNDO", ":: type 'undo' to undo");
     Bar.Color(Bar.WARN); Bar.Text("file change"); Bar.Button("Undo");
 
-    var diff = "diff --git a/index.md b/index.md<br>deleted file mode 100644<br>index 15ea782..0000000<br>--- a/index.md<br>+++ /dev/null<br><font color='blue'>@@ -1,4 +0,0 @@</font><br><font color='red'>-f1.mp3 - track one<br>-f2.mp3 - track two<br>-f3.mp3 - track three<br>-f4.mp3 - track four</font>";
+    var diff = "diff --git a/index.md b/index.md<br>deleted file mode 100644<br>index 15ea782..0000000<br>--- a/index.md<br>+++ /dev/null<br><font color='#66D9EF'>@@ -1,4 +0,0 @@</font><br><font color='red'>-f1.mp3 - track one<br>-f2.mp3 - track two<br>-f3.mp3 - track three<br>-f4.mp3 - track four</font>";
 
     Context.Text(diff);
 
