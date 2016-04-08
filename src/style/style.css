@@ -125,6 +125,7 @@ body {
 #context ul {
     padding: 20px;
     margin: auto;
+    list-style: square;
 }
 
 .cmd-left {

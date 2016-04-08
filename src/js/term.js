@@ -19,32 +19,58 @@ function rep(m, h){
  * in the simulation, a new step will be run.
  */
 function* scriptGen() {
-    Bar.Color(Bar.NEUTRAL);
-    Bar.Button();
-    var files = ["Code", "Desktop", "Documents", "Downloads", "Music", "Pictures", "sync"];
+    // 1
+    Bar.Color(Bar.NEUTRAL); Bar.Button();
+    var files = ["Code", "Desktop", " Documents", "Downloads", "Music", "Pictures", "sync"];
     Context.Files(files);
-
     yield "# Let's learn to use the shell!";
     yield rep("", ":: Comment, not evaluated");
 
-    yield "ls --get-money --get-paid";
-    yield rep("f1.mp3   f2.mp3   f3.mp3   f4.mp3", ":: list directore contents");
-    Bar.Color(Bar.INFO); Bar.Text("ls options");
+    // 2
+    yield "cd Music";
+    yield rep("", ":: /home/Asurada/Music");
+    files = ["f1.mp3", "f2.mp3", "f3.mp3", "f4.mp3", "index.md"];
+    Context.Files(files);
+
+    // 3
+    yield "help list size";
+    yield rep("", ":: you might use: ls --size");
+    Bar.Color(Bar.INFO); Bar.Text("command search");
+
+    var use = "<input type='submit' class='button color_info_d' value='Use'>"
 
     var map = new Map();
-    map.set("-a, --all", "do not ignore entries starting with .");
-    map.set("-l", "use a long listing format");
+    map.set("ls --size ", use + " list directory contents ");
+    map.set("find -size", use + " search for files in a directory hierarchy");
+    map.set("du", use + " estimate file space usage");
     Context.Command(map);
 
-    yield "rm -rvf f1.mp3";
-    yield rep("removed 'f1.mp3' undo",":: remove files or directories : f1.mp3");
-    Bar.Color(Bar.WARN); Bar.Text("rm options"); Bar.Button("Undo");
+    // 4
+    yield "ls --size";
+    yield rep("4961 f1.mp3\n2192 f2.mp3\n3976 f3.mp3\n8172 f4.mp3\n203 index.md");
+    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
+    Context.Files(files);
 
-    var map = new Map();
-    map.set("-r, -R, --recursive", "remove directories and their contents recursively");
-    map.set("-v, --verbose", "explain what is being done");
-    map.set("-f, --force", "ignore nonexistent files and arguments, never prompt");
-    Context.Command(map);
+    // 5
+    yield "rm index.md";
+    yield rep("removed 'index.md' UNDO", ":: type 'undo' to undo");
+    Bar.Color(Bar.WARN); Bar.Text("file change"); Bar.Button("Undo");
+
+    var diff = "diff --git a/index.md b/index.md<br>deleted file mode 100644<br>index 15ea782..0000000<br>--- a/index.md<br>+++ /dev/null<br>@@ -1,4 +0,0 @@<br>-f1.mp3 - track one<br>-f2.mp3 - track two<br>-f3.mp3 - track three<br>-f4.mp3 - track four";
+
+    Context.Text(diff);
+
+    //6
+    yield "undo";
+    yield rep("",":: undo 'rm index.md'");
+    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
+    Context.Files(files);
+
+    // var map = new Map();
+    // map.set("-r, -R, --recursive", "remove directories and their contents recursively");
+    // map.set("-v, --verbose", "explain what is being done");
+    // map.set("-f, --force", "ignore nonexistent files and arguments, never prompt");
+    // Context.Command(map);
 
     yield "mkdir music";
     yield rep("undo", ":: make directories : music");
@@ -185,6 +211,10 @@ class Context {
         content += "</ul>"
 
         Context.div.append($(content));
+    }
+
+    static Text(text) {
+        Context.div.html("<ul>" + text + "<ul>");
     }
 }
 
