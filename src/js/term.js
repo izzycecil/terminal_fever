@@ -58,7 +58,7 @@ function* scriptGen() {
     yield rep("removed 'index.md' UNDO", ":: type 'undo' to undo");
     Bar.Color(Bar.WARN); Bar.Text("file change"); Bar.Button("Undo");
 
-    var diff = "diff --git a/index.md b/index.md<br>deleted file mode 100644<br>index 15ea782..0000000<br>--- a/index.md<br>+++ /dev/null<br>@@ -1,4 +0,0 @@<br>-f1.mp3 - track one<br>-f2.mp3 - track two<br>-f3.mp3 - track three<br>-f4.mp3 - track four";
+    var diff = "diff --git a/index.md b/index.md<br>deleted file mode 100644<br>index 15ea782..0000000<br>--- a/index.md<br>+++ /dev/null<br><font color='blue'>@@ -1,4 +0,0 @@</font><br><font color='red'>-f1.mp3 - track one<br>-f2.mp3 - track two<br>-f3.mp3 - track three<br>-f4.mp3 - track four</font>";
 
     Context.Text(diff);
 
@@ -193,9 +193,10 @@ class Context {
     static Files(files, directory) {
         Context.div.html("");
 
-        var content = "<ul><b>" + directory + "</b>:<br>";
+        var go = "<input type='submit' class='button color_info_l' value='";
+        var content = "<ul><b>" + directory + "</b>:<br><br>";
         for (var file of files) {
-            content += "<li>" + file + "</li>";
+            content += " " + go + file + "'> ";
         }
         content += "</ul>"
 
@@ -239,7 +240,6 @@ var controller = container.console({
         return next;
     }
 });
-
 
 /*
  * This grabs all keypresses, and passes them to jquery-term for the
