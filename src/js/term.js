@@ -22,15 +22,17 @@ function* scriptGen() {
     // 1
     Bar.Color(Bar.NEUTRAL); Bar.Button();
     var files = ["Code", "Desktop", " Documents", "Downloads", "Music", "Pictures", "sync"];
-    Context.Files(files);
+    var dir = "/home/Asurada";
+    Context.Files(files, dir);
     yield "# Let's learn to use the shell!";
     yield rep("", ":: Comment, not evaluated");
 
     // 2
+    dir += "/Music";
     yield "cd Music";
-    yield rep("", ":: /home/Asurada/Music");
+    yield rep("", ":: " + dir);
     files = ["f1.mp3", "f2.mp3", "f3.mp3", "f4.mp3", "index.md"];
-    Context.Files(files);
+    Context.Files(files, dir);
 
     // 3
     yield "help list size";
@@ -49,7 +51,7 @@ function* scriptGen() {
     yield "ls --size";
     yield rep("4961 f1.mp3\n2192 f2.mp3\n3976 f3.mp3\n8172 f4.mp3\n203 index.md");
     Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
-    Context.Files(files);
+    Context.Files(files, dir);
 
     // 5
     yield "rm index.md";
@@ -64,7 +66,7 @@ function* scriptGen() {
     yield "undo";
     yield rep("",":: undo 'rm index.md'");
     Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
-    Context.Files(files);
+    Context.Files(files, dir);
     $("#undo").remove();
 
     // 7
@@ -80,44 +82,17 @@ function* scriptGen() {
     map.set("ffmpeg", use + " ffmpeg video converter");
     Context.Command(map);
 
-    // var map = new Map();
-    // map.set("-r, -R, --recursive", "remove directories and their contents recursively");
-    // map.set("-v, --verbose", "explain what is being done");
-    // map.set("-f, --force", "ignore nonexistent files and arguments, never prompt");
-    // Context.Command(map);
-
-    yield "mkdir music";
-    yield rep("UNDO", ":: make directories : music");
-    Bar.Color(Bar.WARN); Bar.Text("mkdir options"); Bar.Button("Undo");
-
-    var map = new Map();
-    map.set("-p, --parents", "no error if existing, make parent directories as needed");
-    map.set("-v, --verbose", "print a message for each created directory");
-    Context.Command(map);
-
-    yield "mv -vi -t music *.mp3";
-    yield rep("'f1.mp3' -> 'music/f1.mp3'\n'f2.mp3' -> 'music/f2.mp3'\n'f3.mp3' -> 'music/f3.mp3' undo", ":: move (rename) files : f1.mp3 f2.mp3 f3.mp3");
-    Bar.Color(Bar.WARN); Bar.Text("mv options"); Bar.Button("Undo");
-
-    var map = new Map();
-    map.set("-v, --verbose", "explain what is being done");
-    map.set("-i, --interactive", "prompt before overwrite");
-    map.set("-t, --target-directory=\"music\"", "move all SOURCE arguments into \"music\"");
-    Context.Command(map);
-
-    yield "cd music";
-    yield rep("", ":: change the working directory : music");
-    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
-    Context.Command(new Map());
-
+    //8
     yield "mplayer f3.mp3";
     yield rep("MPlayer SVN-r37379 (C) 2000-2015 MPlayer Team\n210 audio & 441 video codecs\ndo_connect: could not connect to socket\nconnect: No such file or directory\nFailed to open LIRC support. You will not be able to use your remote control.\n\nPlaying f3.mp3.\nlibavformat version 56.25.101 (internal)\nAudio only file format detected.\nLoad subtitles in ./\n==========================================================================\nOpening audio decoder: [mpg123] MPEG 1.0/2.0/2.5 layers I, II, III\nAUDIO: 44100 Hz, 2 ch, s16le, 256.0 kbit/18.14% (ratio: 32000->176400)\nSelected audio codec: [mpg123] afm: mpg123 (MPEG 1.0/2.0/2.5 layers I, II, III)\n==========================================================================\n[AO OSS] audio_setup: Can't open audio device /dev/dsp: No such file or directory\nAO: [alsa] 44100Hz 2ch s16le (2 bytes per sample)\nVideo: no video\nStarting playback...\nA:   2.3 (02.2) of 393.0 (06:33.0)  0.4%\n\nExiting... (End of file)", ":: movie player : f3.mp3")
-    Bar.Color(Bar.INFO); Bar.Text("mplayer options");
+    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
+    Context.Files(files, dir);
 
-    var map = new Map()
-    map.set("-quiet", "Make console output less verbose");
-    map.set("-really-quiet", "Display even less output and status messages than with -quiet");
-    Context.Command(map);
+    //9
+    yield "cd ~";
+    yield rep("", ":: /home/Asurada");
+    gen = scriptGen();
+    return gen.next().value;
 }
 
 /*
@@ -215,10 +190,10 @@ class Context {
         Context.div.append($(content));
     }
 
-    static Files(files) {
+    static Files(files, directory) {
         Context.div.html("");
 
-        var content = "<ul>";
+        var content = "<ul><b>" + directory + "</b>:<br>";
         for (var file of files) {
             content += "<li>" + file + "</li>";
         }
