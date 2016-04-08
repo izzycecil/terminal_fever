@@ -1,5 +1,5 @@
-In this section we demo some of the interactive designs elements which we
-believe will be be important in realizing our vision for the final product.
+We developed several mockups to illustrate the important design elements which
+we consider important for developing our prototype.
 
 \subsection{Command Info}
 
@@ -10,14 +10,14 @@ believe will be be important in realizing our vision for the final product.
   \label{fig:cmdinfo}
 \end{figure}
 
-Figure \ref{fig:cmdinfo} illustrates our idea for the autocomplete dialog. The
-user can access the dialog by tab-completing the command they are typing, or
-clicking on a the name of a file in the output of any command. The dialog box
-can show a list of possible commands, determining which suggestions are most
-likely based on command history, the current working context, or the type of the
-file to be acted on. The autocomplete open remains open, leaving the user a
-trail of ``breadcrumbs'' which can lead them back to other commands' information
-windows.
+Figure \ref{fig:cmdinfo} is illustrates our concept for the autocomplete
+dialog. The user can access the dialog by tab-completing the command they are
+typing, or clicking on a the name of a file in the output of any command. The
+dialog box can show a list of possible commands, determining which suggestions
+are most likely based on command history, the current working context, or the
+type of the file to be acted on. The autocomplete open remains open, leaving the
+user a trail of ``breadcrumbs'' which can lead them back to other commands'
+information windows.
 
 The command info window is parsed from the man pages of the suggested commands,
 and the layout is right/left aligned to make it easier to read. The window is
@@ -26,31 +26,6 @@ doubles as an input form for the CLI. The possible command line options that
 will appear in the documentation can be treated as form controls, (conceptually
 similar to checkboxes), which allow the user to interactively build commands by
 clicking or tabbing through.
-
-\subsection{Automation Helper}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/interface/automation.eps}
-  \caption{An example use of the automation window}
-  \label{fig:autow}
-\end{figure}
-
-One of the main things that makes the command line powerful, and one of the
-hardest features to use effectively, is the ability to automate common system
-tasks. Figure \ref{fig:autow} shows an example interface for a feature which can
-guide users through the process of automating tasks. The interface makes use of
-the users command history to detect when the same command has been used several
-times in the row, and presents the user with a button to bring up the automation
-window \--- this follows from the concept of responsive enabling.
-
-The automation window is a sequence map that walks the user through the steps of
-creating a loop in their shell's language to repeat a task multiple times. In
-this example, the terminal is helping the user iterate over file names, so it
-creates a form where the user can select files, (again, similar to checkboxes),
-to add to the loop. There is also a textbox where the user can input formatted
-text to select files with shell wildcards \--- this is indicated to the user by
-adding an input hint to the form.
 
 \subsection{Undo Window}
 
@@ -86,13 +61,66 @@ red color on the dialog window also serves as a visual warning to the user to
 indicate that what they are doing will ultimately result in a real change to the
 state of the system, to make them more likely to exercise proper caution.
 
+\subsection{Automation Helper}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/interface/automation.eps}
+  \caption{An example use of the automation window}
+  \label{fig:autow}
+\end{figure}
+
+One of the main things that makes the command line powerful, and one of the
+hardest features to use effectively, is the ability to automate common system
+tasks. Figure \ref{fig:autow} shows an example interface for a feature which can
+guide users through the process of automating tasks. The interface makes use of
+the users command history to detect when the same command has been used several
+times in the row, and presents the user with a button to bring up the automation
+window \--- this follows from the concept of responsive enabling.
+
+The automation window is a sequence map that walks the user through the steps of
+creating a loop in their shell's language to repeat a task multiple times. In
+this example, the terminal is helping the user iterate over file names, so it
+creates a form where the user can select files, (again, similar to checkboxes),
+to add to the loop. There is also a textbox where the user can input formatted
+text to select files with shell wildcards \--- this is indicated to the user by
+adding an input hint to the form.
+
 \subsection{Prototype}
+
 To better demonstrate our interface design we've developed a web-based
-prototype. This prototype reproduces some of the behavior discussed in the
-above three examples - namely highly visible contextual information, the ability
-to undo state changes, and assistance in automating tedious tasks.
+prototype. This prototype reproduces some of the behavior discussed in the above
+three examples. Namely the highly visible contextual information, the ability to
+undo state changing commands, and assistance in automating tedious tasks.
 
-We've constructed this tool using common web technologies (HTML, CSS, and
-ECMAScript), along with the jquery and jquery-console libraries. This prototype
-can be accessed at the following URL: http://nmt.edu/~ljencka/HCI/
+We've constructed this tool using web technologies (HTML, CSS, and JavaScript),
+along with the jquery and jquery-console libraries. This prototype can be
+accessed at the following URL:
+\url{http://infohost.nmt.edu/~ljencka/terminal_fever/}. We've included a few
+screenshots of our prototype to show what an early implementation might look
+like.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/prototype/cmd.jpg}
+  \caption{A prototype displaying the command search function}
+  \label{fig:cmdsearch}
+\end{figure}
+
+In Figure \ref{fig:cmdsearch} we see the result of user typing \texttt{help} in
+the shell. The context window displays search results suggesting what the user
+might want to do with the given input file. Each suggested command can be
+autocompleted in the shell by clicking the ``Use'' button, or tabbing through
+the suggestions.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.85\linewidth]{figures/prototype/undo.jpg}
+  \caption{A prototype displaying the option to undo a command}
+  \label{fig:cmdundo}
+\end{figure}
+
+Figure \ref{fig:cmdundo} shows a command that changed the state of the system
+\--- specifically, the user deleted a markdown file. Our system can use git to
+backup the state of the system as the user works, so it is possible to undo
+these changes. If the user clicks ``Undo'' or types it at the command line, then the file will be restored.

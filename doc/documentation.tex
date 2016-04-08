@@ -1,6 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
-\usepackage{float}
+\usepackage{hyperref,float}
 \usepackage[top=1.5in,bottom=1.5in,left=1.5in,right=1.5in]{geometry}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
@@ -26,6 +26,10 @@
 \label{sec:tasks}
 \input{tasks.tex}
 
+\section{Existing Systems}
+\label{sec:existing}
+\input{existing_systems.tex}
+
 \section{Task Navigation (Design Alternatives)}
 \label{sec:tas_nav}
 \input{task_nav.tex}
@@ -35,16 +39,8 @@
 \input{interaction.tex}
 
 \section{Interface Design}
-% Please list at least three important interactive interface in your project and
-% use sketch/storyboard to explain the design patterns you use in each
-% interface. You should also explain why the design pattern is important in the
-% interface when solving any task in Section 4.
 \label{sec:interface}
 \input{interface.tex}
-
-\section{Existing Systems}
-\label{sec:existing}
-\input{existing_systems.tex}
 
 %%
 %% Bibliography here
