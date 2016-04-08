@@ -65,6 +65,20 @@ function* scriptGen() {
     yield rep("",":: undo 'rm index.md'");
     Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
     Context.Files(files);
+    $("#undo").remove();
+
+    // 7
+    yield "help f2.mp3 ";
+    yield rep("", ":: you might use: mplayer");
+    Bar.Color(Bar.INFO); Bar.Text("command search");
+
+    var use = "<input type='submit' class='button color_info_d' value='Use'>"
+
+    var map = new Map();
+    map.set("mplayer", use + " movie player for Linux");
+    map.set("vlc", use + " the VLC media player");
+    map.set("ffmpeg", use + " ffmpeg video converter");
+    Context.Command(map);
 
     // var map = new Map();
     // map.set("-r, -R, --recursive", "remove directories and their contents recursively");
@@ -73,7 +87,7 @@ function* scriptGen() {
     // Context.Command(map);
 
     yield "mkdir music";
-    yield rep("undo", ":: make directories : music");
+    yield rep("UNDO", ":: make directories : music");
     Bar.Color(Bar.WARN); Bar.Text("mkdir options"); Bar.Button("Undo");
 
     var map = new Map();

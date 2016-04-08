@@ -825,7 +825,7 @@
     $(this).text(txt);
       $(this).html($(this).html().replace(/\t/g, '&nbsp;&nbsp;')
                    .replace(/\n/g,'<br/>')
-                   .replace(/UNDO/g,'<input type="submit" class="button float_right color_warn_d" value="Undo">'));
+                   .replace(/UNDO/g,'<input id="undo" type="submit" class="button float_right color_warn_d" value="Undo">'));
     return this;
   };
 
