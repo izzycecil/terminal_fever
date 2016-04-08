@@ -60,3 +60,5 @@ tags
 *.aux
 doc/auto/
 
+*.pdf
+
