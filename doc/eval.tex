@@ -1,0 +1,69 @@
+Evaluating the effectiveness of our design is an important step in understanding
+how we can and have effected users abilities with and knowledge of the command
+line. An important metric for this would be \emph{unique command count} --- the
+measure of how many unique commands the user is able to use. This includes
+things such as looping, options, as well as actual commands. Our goal is to
+understand the impact our designs could have on unique command count, as well as
+general user experience.
+
+We hypothesize the following:
+\begin{itemize}
+  \item Users who use our program will have a higher unique command count than
+  the control group.
+  \item Users who use our program will report a more positive user experience.
+  \item Users who use our program will maintain their unique command count
+  outside of our shell.
+\end{itemize}
+These captor the idea that the users should begin using the shell better, have
+less fear of the shell, and will be able to carry this knowledge to other systems.
+
+\subsection{Collecting Data}
+Collecting data to this end will take place in two parts:
+\begin{itemize}
+  \item A user survey to gauge users emotional experience --- how much they
+  enjoyed using the command line.
+  \item A data reporting study, which would report command history for a number
+  of users.
+\end{itemize}
+These would each need to be run for our two groups: control and enhanced. Likely
+our study would require each group (of mixed experience levels), to use our
+software for a period of time. Then we would give them a number of tasks to
+perform. After they have completed the tasks, we can collect statistics, and
+conduct the survey.
+
+Our user survey would need to focus in on the emotional experience of our
+users. It would ask questions such as
+\begin{quote}
+  \begin{itemize}
+    \item Rank your intimidation of the system.
+    \item Rank how hard it was to perform a given task.
+    \item Rank how well you think you used the system.
+    \item Rank how happy you were with your experience.
+  \end{itemize}
+\end{quote}
+
+Automated usage statistics would be much easier. All we would need to do is get
+the history file for each user, and look at the unique command usage.
+
+Together we can use these to test the first two of our hypotheses. For the
+third, we would require users to switch from our system to a traditional system
+after an extended period. At that point we could likely re-conduct our analysis
+to see if users have learned skills in a way they can reproduce.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/user_study.png}
+  \caption{\label{fig:ustud} This shows a timeline of how we would evaluate our
+    design.}
+\end{figure}
+Figure \ref{fig:ustud} shows something of a timeline on how this would work to
+develop our understanding. Again, in it we have two groups of users. Each
+receives training in a different command line system. Each will be given a set
+of tasks after some period of time. After these tasks, we can begin to analyze
+the results.
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "documentation"
+%%% End:
