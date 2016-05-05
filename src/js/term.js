@@ -89,6 +89,15 @@ function* scriptGen() {
     Context.Files(files, dir);
 
     //9
+    yield "play f1.mp3";
+    yield rep("",":: exited with 0");
+    yield "play f2.mp3";
+    yield rep("",":: exited with 0");
+    Bar.Color(Bar.INFO); Bar.Text("automate"); Bar.Button("next");
+
+    Context.Text("<i>Would you like to automate?</i><br><li>Choose Files</li><li>Preview Results</li><li>Run Automation</li>");
+
+    //10
     yield "cd ~";
     yield rep("", ":: /home/Asurada");
     gen = scriptGen();
