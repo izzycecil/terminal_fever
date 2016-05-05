@@ -254,12 +254,15 @@ var controller = container.console({
  * This grabs all keypresses, and passes them to jquery-term for the
  * 'hacker-typer' effect.
  */
-$(controller.typer).keydown(function (e) {
+$(controller.typer).unbind("keydown").bind("keydown", function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    if (input != "" && e.which != 13) {
+    if (e.which == 13) {
+        controller.typer.CT();
+    } else if (input != "") {
         controller.typer.consoleInsert(input[0]);
         input = input.substring(1);
     }
 });
+

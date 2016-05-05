@@ -297,6 +297,10 @@
     // Handle key hit before translation
     // For picking up control characters like up/left/down/right
 
+    typer.CT = function CT() {
+      commandTrigger();
+    };
+
     typer.keydown(function(e){
       cancelKeyPress = 0;
       var keyCode = e.keyCode;
