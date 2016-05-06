@@ -13,14 +13,37 @@ function rep(m, h){
 
     return resp;
 }
+
 /*
  * This generator represents every step in the simulation. ALL modifying the
  * state of the simulation will be triggered here. Every time the user hits enter
  * in the simulation, a new step will be run.
  */
 function* scriptGen() {
+    // intro comment
+    Bar.Color(Bar.INFO); Bar.Text("welcome to our mockup!"); Bar.Button();
+    var indent = '&nbsp&nbsp&nbsp&nbsp&nbsp';
+    var intro = 'Hello! Thank you for taking a few minutes out of your dead ' +
+                'week to help us out.<br>' +
+                'The following is a mockup of a redesign of the shell. If ' +
+                'you\'ve ever seen ' +
+                '<a href="http://hackertyper.net/">hacker typer<a> before, ' +
+                'this website works the same way:<br>' +
+                '<br>' +
+                indent + '1. type randomly to fill out a line<br>' +
+                indent + '2. press enter<br>' +
+                indent + '3. rinse and repeat!<br>' +
+                '<br>' +
+                'Before you start, please take the following  ' +
+                '<a href="https://goo.gl/some/thing">short survey</a>.';
+
+    Context.Text(intro);
+
+    yield "ok!";
+    yield rep("# yay!");
+
     // 1
-    Bar.Color(Bar.NEUTRAL); Bar.Button();
+    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
     var files = ["Code", "Desktop", " Documents", "Downloads", "Music", "Pictures", "sync"];
     var dir = "/home/Asurada";
     Context.Files(files, dir);
@@ -31,7 +54,7 @@ function* scriptGen() {
     dir += "/Music";
     yield "cd Music";
     yield rep("", ":: " + dir);
-    files = ["f1.mp3", "f2.mp3", "f3.mp3", "f4.mp3", "index.md"];
+    files = ["f1.mp3", "f2.mp3", "f3.mp3", "f4.mp3", "f5.mp3", "f6.mp3", "f7.mp3", "bank_info.txt", "index.md"];
     Context.Files(files, dir);
 
     // 3
@@ -49,7 +72,7 @@ function* scriptGen() {
 
     // 4
     yield "ls --size";
-    yield rep("4961 f1.mp3\n2192 f2.mp3\n3976 f3.mp3\n8172 f4.mp3\n203 index.md");
+    yield rep("4961 f1.mp3\n2192 f2.mp3\n3976 f3.mp3\n8172 f4.mp3\n2013 f5.mp3\n6651 f6.mp3\n5018 f7.mp3\n2391 bank_info.txt\n203 index.md");
     Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
     Context.Files(files, dir);
 
@@ -70,7 +93,7 @@ function* scriptGen() {
     $("#undo").remove();
 
     // 7
-    yield "help f2.mp3 ";
+    yield "help f2.mp3";
     yield rep("", ":: you might use: mplayer");
     Bar.Color(Bar.INFO); Bar.Text("command search");
 
@@ -89,20 +112,79 @@ function* scriptGen() {
     Context.Files(files, dir);
 
     //9
-    yield "play f1.mp3";
-    yield rep("",":: exited with 0");
-    yield "play f2.mp3";
-    yield rep("",":: exited with 0");
-    Bar.Color(Bar.INFO); Bar.Text("automate"); Bar.Button("next");
+    yield "rm f1.mp3";
+    yield rep("removed 'f1.mp3' UNDO", ":: type 'undo' to undo");
+    Bar.Color(Bar.WARN); Bar.Text("file change"); Bar.Button("Undo");
+    var diff = "removed binary file 'f1.mp3'";
+    Context.Text(diff);
 
-    Context.Text("<i>Would you like to automate?</i><br><li>Choose Files</li><li>Preview Results</li><li>Run Automation</li>");
+    // rm
+    yield "rm f2.mp3";
+    $("#undo").remove();
+    yield rep("removed 'f2.mp3' UNDO", ":: type 'undo' to undo");
 
-    //10
-    yield "cd ~";
-    yield rep("", ":: /home/Asurada");
-    gen = scriptGen();
-    return gen.next().value;
-}
+    // automate question
+    Bar.Color(Bar.INFO); Bar.Text("automate");
+    var auto = '<span style="width: 100%; text-align: center; position: inherit; top: 30px;">   Would you like to automate this process?<br><br>    <input style="visibility: visible;" id="bar-button" class="button color_info_l" value="yes" type="submit"> <input style="visibility: visible;" id="bar-button" class="button color_info_l" value="ignore" type="submit"><br> </span> <span style="width: 100%; text-align: center; bottom: 5px; position: inherit;">   <span> steps: </span>    <span style="font-style: italic; color: gray;"> choose files </span> -    <span style="font-style: italic; color: gray;">make command</span> -    <span style="font-style: italic; color: gray;"> run automation </span>   </span>';
+    Context.RawText(auto);
+
+    // select files
+    yield "";
+    yield rep("", ":: you clicked 'yes'");
+    Bar.Button("Back");
+    auto = '<span style="width: 100%; position: inherit; top: 30px; text-align: center;"> <input value="f3.mp3" class="button color_neutral_l" type="submit">  <input value="f4.mp3" class="button color_neutral_l" type="submit">  <input value="f5.mp3" class="button color_neutral_l" type="submit">  <input value="f6.mp3" class="button color_neutral_l" type="submit">  <input value="f7.mp3" class="button color_neutral_l" type="submit">  <input value="bank_info.txt" class="button color_neutral_l" type="submit"> <input value="index.md" class="button color_neutral_l" type="submit"><br><br> <input style="width: 53px;" class="button color_info_l" value="Next">  </span> <span style="width: 100%; text-align: center; bottom: 5px; position: inherit;">   <span> steps: </span>    <span style="font-style: italic; color: yellow;"> choose files </span> -    <span style="font-style: italic; color: gray;">make command</span> -    <span style="font-style: italic; color: gray;"> run automation </span>   </span>';
+    Context.RawText(auto);
+
+    // select files
+    yield "";
+    yield rep("", ":: you selected files");
+    auto = '<span style="width: 100%; position: inherit; top: 30px; text-align: center;"> <input class="button color_good_l" value="f3.mp3" type="submit">  <input class="button color_good_l" value="f4.mp3" type="submit">  <input class="button color_good_l" value="f5.mp3" type="submit">  <input class="button color_good_l" value="f6.mp3" type="submit">  <input class="button color_good_l" value="f7.mp3" type="submit">  <input value="bank_info.txt" class="button color_neutral_l" type="submit"> <input value="index.md" class="button color_neutral_l" type="submit"> <br><br><input style="width: 53px;" class="button color_info_l" value="Next">    </span> <span style="width: 100%; text-align: center; bottom: 5px; position: inherit;">   <span> steps: </span>    <span style="font-style: italic; color: yellow;"> choose files </span> -    <span style="font-style: italic; color: gray;">make command</span> -    <span style="font-style: italic; color: gray;"> run automation </span>   </span>';
+    Context.RawText(auto);
+
+    // write command
+    yield "";
+    yield rep("", ":: you clicked 'next'");
+    auto = '<span style="width: 100%; position: inherit; top: 30px; text-align: center;"> <input value="rm $FILES" type="text"><br><br> This will remove the files ($FILES) previously selected.<br><br><input style="width: 53px;" class="button color_info_l" value="Next"> </span> <span style="width: 100%; text-align: center; bottom: 5px; position: inherit;">   <span> steps: </span>    <span style="font-style: italic; color: yellowgreen;"> choose files </span> -    <span style="font-style: italic; color: yellow;">make command</span> -    <span style="font-style: italic; color: gray;"> run automation </span>   </span>';
+    Context.RawText(auto);
+
+    // finalize command
+    yield "";
+    yield rep("", ":: you clicked 'next'");
+    auto = '<span style="width: 100%; position: inherit; top: 30px; text-align: center;"> Run the command   <code>rm f3.mp3 f4.mp3 f5.mp3 f6.mp3 f7.mp3</code>   ?<br><br><input style="width: 53px;" class="button color_warn_l" value="Yes"> </span> <span style="width: 100%; text-align: center; bottom: 5px; position: inherit;">   <span> steps: </span>    <span style="font-style: italic; color: yellowgreen;"> choose files </span> -    <span style="font-style: italic; color: yellowgreen;">make command</span> -    <span style="font-style: italic; color: yellow;"> run automation </span>   </span>';
+    Context.RawText(auto);
+
+    // remove files
+    yield "";
+    $("#undo").remove();
+    yield rep("removed 'f3.mp3', 'f4.mp3', 'f5.mp3', 'f6.mp3', 'f7.mp3' UNDO", ":: type 'undo' to undo");
+    Bar.Color(Bar.WARN); Bar.Text("file change"); Bar.Button("Undo");
+    var diff = "removed binary files 'f3.mp3', 'f4.mp3', 'f5.mp3', 'f6.mp3', 'f7.mp3'";
+    Context.Text(diff);
+
+    // final undo
+    yield "undo";
+    Bar.Color(Bar.NEUTRAL); Bar.Text(""); Bar.Button();
+    files = ["f3.mp3", "f4.mp3", "f5.mp3", "f6.mp3", "f7.mp3", "bank_info.txt", "index.md"];
+    Context.Files(files, dir);
+    $("#undo").remove();
+    yield rep("", ":: undo 'rm f3.mp3 f4.mp3 f5.mp3 f6.mp3 f7.mp3'");
+
+    // intro comment
+    yield "exit";
+
+    Bar.Color(Bar.INFO); Bar.Text("exit survey"); Bar.Button();
+    var exit = 'Just one more thing!' +
+               '<br><br>' +
+               'Please take this ' +
+               '<a href="https://goo.gl/some/thing">short survey</a> to ' +
+               'give us feedback on the concept.' +
+               '<br><br>' +
+               'Thanks again.';
+
+    Context.Text(exit);
+
+    yield rep("# bye!");
+};
 
 /*
  * This class contains all of the state for the bar.
@@ -210,6 +292,10 @@ class Context {
         content += "</ul>"
 
         Context.div.append($(content));
+    }
+
+    static RawText(text) {
+        Context.div.html(text);
     }
 
     static Text(text) {
