@@ -35,7 +35,7 @@ function* scriptGen() {
                 indent + '3. rinse and repeat!<br>' +
                 '<br>' +
                 'Before you start, please take the following  ' +
-                '<a href="https://goo.gl/some/thing">short survey</a>.';
+                '<a href="http://goo.gl/forms/hd1VVxD8Ha">short survey</a>.';
 
     Context.Text(intro);
 
@@ -176,7 +176,7 @@ function* scriptGen() {
     var exit = 'Just one more thing!' +
                '<br><br>' +
                'Please take this ' +
-               '<a href="https://goo.gl/some/thing">short survey</a> to ' +
+               '<a href="http://goo.gl/forms/gVtMS29hjx">short survey</a> to ' +
                'give us feedback on the concept.' +
                '<br><br>' +
                'Thanks again.';
