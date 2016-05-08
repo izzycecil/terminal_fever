@@ -159,17 +159,20 @@ def plot_all(table, selector):
         pyplot.ylim([0, 5])
 
 
-def main():
+def get_full_dict():
     entry_list, exit_list = read_data()
     people, entry_dict, exit_dict, full_dict = organize_data(entry_list, exit_list)
     extend_data(full_dict)
 
     return full_dict
 
-if __name__ == "__main__":
-    full_dict = main()
+def main():
+    full_dict = get_full_dict()
 
     # Omega Gangsta Mode
     for label in categories.keys():
         plot_all(full_dict, label)
         break
+
+if __name__ == "__main__":
+    main()
