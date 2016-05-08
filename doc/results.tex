@@ -72,15 +72,15 @@ contained the following questions:
 In between these surveys we presented a demo of our system.
 
 \subsection{Data Analysis}
-Data analysis was carried out using the Julia language, along with various
-statistical tools. A cursory data analysis was also provided by Google Sheets,
-allow a look at the results from each question.
+Data analysis was carried out using the Julia and Python languages, along with
+various statistical tools. A cursory data analysis was also provided by Google
+Sheets, allowing an overview of the results from each question.
 
 The first thing we want to do is understand the demographics of our
-survey. Primarily, and somewhat unsurprisingly, we had male CS majors. Linux was
-the dominant operating system, but there was representation from other
-systems. Our education levels were quite divers. This combination serves well to
-test our target audience.
+survey. Primarily, and somewhat unsurprisingly, the primary responding group was
+male CS majors. Linux was the dominant operating system, but not exclusive. The
+reported education levels were diverse, spanning from the sophomore to graduate
+levels.
 
 % TODO: Probably make subfigs for this data?
 \begin{figure}[ht]
@@ -120,11 +120,25 @@ align with our target audience, however there was novice representation.
     user base. Note the larger right tail. }
 \end{figure}
 
+To get a better understanding of how our users were grouped we conducted several
+standard pearson product-moment correlation coefficient analysis'. Firstly, we
+compared how users were most significantly grouped by how they answered the
+entry and exit surveys. Figure \ref{fig:p_plot} shows these results in a
+graphical form, with the table available in Appendix \ref{fig:p_table}. Marked
+in color are the correlation values in all instances where the p-value is
+significant (less than 0.05). A divergent colormap is used: red indicating
+negative correlation, the darker the stronger; blue indicating positive
+correlation, the darker the stronger. Everything less than significant has been
+omitted for clarity.
+
+The five most highly correlated questions are as follows:
+
+The only significant negative correlation is between
 
 \subsection{Qualitative Analysis}
     8d. Describe the quantitative/qualitative analysis results with proper
     statistics test/grounded theory. You should also indicate whether or not the
-    analysis result can support the hypotheses in Section 7.
+    analysis result can support the hypotheses in Section 8.
 
 %%% Local Variables:
 %%% mode: latex
