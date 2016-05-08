@@ -2,39 +2,65 @@ import csv
 import itertools
 from matplotlib import pyplot
 
-usability_qs = [
-    'I think the command line is easy to use.',
-    'I think the command line is more usable than a GUI.',
-    'I feel comfortable using the shell.',
-    'I prefer command line tools to GUI tools.',
-    'I think I would prefer the shell if I understood it better (or already do).',
-    'I think the shell is easy to learn.'
-]
-
-efficiency_qs = [
-    'I use a wide array of commands.',
-    'I use control structures in the shell.',
-    'I use piping and redirection.'
-]
-
-knowledge_qs = [
-    'When presented with a problem, I know the commands to use.',
-    'I feel that learning how to use new commands is easy.',
-    'I use a wide array of commands.',
-    'I feel that I have sufficient knowledge of the shell for what I need.'
-]
-
-qual_qs = [
-    'Please explain what tasks you commonly carry out on in the shell.',
-    'What did you like most about the system?',
-    'What do you think needs the most improvements?'
-]
-
-categories = {'Usability Rating': usability_qs,
-              'Efficiency Rating': efficiency_qs,
-              'Knowledge Rating': knowledge_qs
+qs_entry = {
+    'usability': [
+        'I think the command line is easy to use.',
+        'I think the command line is more usable than a GUI.',
+        'I feel comfortable using the shell.',
+        'I prefer command line tools to GUI tools.',
+        'I think I would prefer the shell if I understood it better (or already do).',
+        'I think the shell is easy to learn.'
+    ],
+    'efficiency': [
+        'I use a wide array of commands.',
+        'I use control structures in the shell.',
+        'I use piping and redirection.'
+    ],
+    'knowledge': [
+        'When presented with a problem, I know the commands to use.',
+        'I feel that learning how to use new commands is easy.',
+        'I use a wide array of commands.',
+        'I feel that I have sufficient knowledge of the shell for what I need.'
+    ],
+    'qualitative': [
+        'Please explain what tasks you commonly carry out on in the shell.',
+        'What did you like most about the system?',
+        'What do you think needs the most improvements?'
+    ]
 }
 
+qs_exit = {
+    'usability': [
+        'This system would improve my usage of the shell.',
+        'This system would help me solve problems in the shell.',
+        'This system is more usable than a traditional shell.',
+        'I find the interface of the system inviting and usable.'
+        ],
+    'education': [
+        'This system would teach me commands in a more effective way that  the status quo.',
+        'This system would help me perform automations that I would not make on my own.',
+        'Using this system would improve my understanding of all shells.'
+        ],
+    'intention': [
+        'I would prefer this to the normal shell experience',
+        'I would use this system in the future.',
+        'I would suggest this system to others.'
+        ],
+    'qualitative': [
+        'I would suggest this system to others.',
+        'What did you like most about the system?',
+        'What do you think needs the most improvements?'
+        ]
+}
+
+categories = {
+    'Usability Rating (Entry)': qs_entry['usability'],
+    'Efficiency Rating (Entry)': qs_entry['efficiency'],
+    'Knowledge Rating (Entry)': qs_entry['knowledge'],
+    'Usability Rating (Exit)': qs_exit['usability'],
+    'Education Rating (Exit)': qs_exit['education'],
+    'Intention Rating (Exit)': qs_exit['intention']
+}
 
 def read_data():
     entry_list = None
@@ -60,6 +86,8 @@ def organize_data(entry_list, exit_list):
     exit_dict = {}
     qual_dict = {}
 
+    qual_qs = qs_entry['qualitative'] + qs_exit['qualitative']
+
     for name in people:
         for d in entry_list:
             if d['Full Name'] == str(name):
@@ -82,7 +110,6 @@ def organize_data(entry_list, exit_list):
 
     return people, entry_dict, exit_dict, full_dict
 
-
 def crunch_numbers(table, questions, label):
     for k in table.keys():
         sum = 0
@@ -94,7 +121,6 @@ def crunch_numbers(table, questions, label):
 def extend_data(table):
     for label, lst in categories.items():
         crunch_numbers(table, lst, label)
-
 
 def pull_users(table, key, pred):
     return [k for k, v in table.items() if pred(v.get(key))]
