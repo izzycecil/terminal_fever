@@ -12,7 +12,7 @@ qs_entry = {
         'I think the shell is easy to learn.'
     ],
     'efficiency': [
-        'I use a wide array of commands.',
+        'I use wild cards in the shell.',
         'I use control structures in the shell.',
         'I use piping and redirection.'
     ],
@@ -23,9 +23,7 @@ qs_entry = {
         'I feel that I have sufficient knowledge of the shell for what I need.'
     ],
     'qualitative': [
-        'Please explain what tasks you commonly carry out on in the shell.',
-        'What did you like most about the system?',
-        'What do you think needs the most improvements?'
+        'Please explain what tasks you commonly carry out on in the shell.'
     ]
 }
 
@@ -47,7 +45,6 @@ qs_exit = {
         'I would suggest this system to others.'
         ],
     'qualitative': [
-        'I would suggest this system to others.',
         'What did you like most about the system?',
         'What do you think needs the most improvements?'
         ]
@@ -86,21 +83,21 @@ def organize_data(entry_list, exit_list):
     exit_dict = {}
     qual_dict = {}
 
-    qual_qs = qs_entry['qualitative'] + qs_exit['qualitative']
-
     for name in people:
         for d in entry_list:
             if d['Full Name'] == str(name):
                 entry_dict[name] = {k:(int(v) if v.isdigit() else v) for k,v in d.items()}
                 entry_dict[name].pop('Full Name')
-                qual_dict[name] = {qual_qs[0]: entry_dict[name].pop(qual_qs[0])}
+                qual_dict[name] = {}
+                for q in qs_entry['qualitative']:
+                    qual_dict[name][q] = entry_dict[name].pop(q)
 
         for d in exit_list:
             if d['Name'] == str(name):
                 exit_dict[name] = {k:(int(v) if v.isdigit() else v) for k,v in d.items()}
                 exit_dict[name].pop('Name')
-                qual_dict[name][qual_qs[1]] = exit_dict[name].pop(qual_qs[1])
-                qual_dict[name][qual_qs[2]] = exit_dict[name].pop(qual_qs[2])
+                for q in qs_exit['qualitative']:
+                    qual_dict[name][q] = exit_dict[name].pop(q)
 
     full_dict = {}
 
@@ -108,7 +105,7 @@ def organize_data(entry_list, exit_list):
         full_dict[name] = entry_dict[name].copy()
         full_dict[name].update(exit_dict[name])
 
-    return people, entry_dict, exit_dict, full_dict
+    return people, entry_dict, exit_dict, full_dict, qual_dict
 
 def crunch_numbers(table, questions, label):
     for k in table.keys():
@@ -187,7 +184,7 @@ def plot_all(table, selector):
 
 def get_full_dict():
     entry_list, exit_list = read_data()
-    people, entry_dict, exit_dict, full_dict = organize_data(entry_list, exit_list)
+    people, entry_dict, exit_dict, full_dict, qual_dict = organize_data(entry_list, exit_list)
     extend_data(full_dict)
 
     return full_dict
