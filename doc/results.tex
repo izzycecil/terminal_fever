@@ -72,62 +72,61 @@ contained the following questions:
 In between these surveys we presented a demo of our system.
 
 \subsection{Data Analysis}
+
 Data analysis was carried out using the Julia and Python languages, along with
 various statistical tools. A cursory data analysis was also provided by Google
 Sheets, allowing an overview of the results from each question.
 
-The first thing we want to do is understand the demographics of our
-survey. Primarily, and somewhat unsurprisingly, the primary responding group was
-male CS majors. Linux was the dominant operating system, but not exclusive. The
-reported education levels were diverse, spanning from the sophomore to graduate
-levels.
-
-We used the following Julia code to analyze the relative skill levels of our
-users. Simply summing up the comfort level of all questions on the Entry survey,
-we ranked users from Novice (0 experience) to Expert (39). Figure
-\ref{fig:skill} shows a histogram representing user skill. You will notice that
-the majority of our users are more experienced (self-reportedly). This does not
-align with our target audience, however there was novice representation.
-
-% TODO: Probably make subfigs for this data?
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/age.png}
-  \label{fig:age}
-  \caption{ Age demographics of survey base. }
-\end{figure}
+The first thing we wanted to do was understand the demographics of our survey.
+The primary questions of age and gender did not show enough diversity to be very
+statistically useful \-- almost all of the respondents were males between the
+ages of 18 and 24. Education level showed a more promisingly even distribution,
+and while the question of primary operating system is skewed in favor of Linux
+(clearly indicating some selection bias), users of other OSes still have a
+decent representation.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/edu.png}
-  \label{fig:edu}
-  \caption{ Education demographics of survey base. }
+  \begin{subfigure}[b]{0.45\textwidth}
+\label{fig:age}
+    \includegraphics[width=\textwidth]{figures/stats/age.png}
+    \caption{Age}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.45\textwidth}
+\label{fig:gender}
+    \includegraphics[width=\textwidth]{figures/stats/gender.png}
+    \caption{Gender}
+  \end{subfigure}
+
+  \begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{figures/stats/edu.png}
+\label{fig:edu}
+    \caption{Education}
+  \end{subfigure}
+  \quad
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{figures/stats/os.png}
+\label{fig:OS}
+    \caption{Primary OS}
+  \end{subfigure}
+  \caption{Main demographic information for survey base}
 \end{figure}
 
-\begin{figure}[ht]
+Our entry survey also includes questions pertaining to the users' abilities when
+using the terminal. Figure \ref{fig:skillz} shows a histogram representing a
+simple additive ranking of the participants self-reported skills. The majority
+of our users claim to be more experienced with the shell, which unfortunately
+does not align with our target audience. However, there was still novice
+representation in the data.
+
+\begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/gender.png}
-  \label{fig:gender}
-  \caption{ Gender demographics of survey base. }
+  \includegraphics[width=0.6\textwidth]{figures/stats/user-skills.png}
+\label{fig:skillz}
+  \caption{Histogram of the relative skill levels of our users. Note the larger
+    right tail.}
 \end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/os.png}
-  \label{fig:OS}
-  \caption{OS demographics of survey base. }
-\end{figure}
-
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=0.8\linewidth]{figures/stats/user-skills.png}
-%   \label{fig:skill}
-%   \caption{Histogram showing the relative skill levels of the user base. Note
-%     the larger right tail.}
-% \end{figure}
-
-% overview of pearson correlation overview of vectors - any correlations? patterns
-% in pearson correlation average vector response
 
 To analyze different groups of users and their attitudes toward our prototype,
 we calculated the Pearson correlation coefficient for every pair of survey
@@ -137,47 +136,40 @@ statistics\footnote{The most significant demographic education level, which
   still had a $p$-value over $0.10$!}.  However, the data analysis did show many
 interesting correlations between the questions themselves.
 
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{figures/stats/sig.png}
-  \label{fig:p_table}
+\label{fig:pvalplot}
   \caption{A matrix highlighting the Pearson correlations between each pair of
     survey questions for which the $p$-value was $< 0.05$. Darker squares
-    indicate stronger correlations in the users' answers. The bold line on the
-    diagonal indicates that each question was 100\% correlated with itself.}
+    indicate stronger correlations.}
 \end{figure}
 
-To get a better understanding of how our users were grouped we conducted several
-standard pearson product-moment correlation coefficient analysis'. Firstly, we
-compared how users were most significantly grouped by how they answered the
-entry and exit surveys. Figure \ref{fig:p_plot} shows these results in a
-graphical form, with the table available in Appendix \ref{fig:p_table}. Marked
-in color are the correlation values in all instances where the p-value is
-significant (less than 0.05). A divergent colormap is used: red indicating
-negative correlation, the darker the stronger; blue indicating positive
-correlation, the darker the stronger. Everything less than significant has been
-omitted for clarity.
+Figure \ref{fig:pvalplot} shows the statistically significant correlations between
+the responses to our survey questions. A full table containing exact figures is
+available in Appendix
+% \ref{fig:p_table}.
 
-Our entry survey had three groups of questions intended to serve as 'vectors'
-for a user: usability, efficiency, and knowledge. This usability vector is
-composed of the questions in the top-left corner of the pearson graph. We can
-see that this vector is not homogenous -  a user's given response on one of the
-vector's questions does not correlate to most of the rest of the vector's
-questions. The next set, efficency, is better connected; "I use control
-structures in the shell" is the outlier for this group. The last set on the
-entry survey, knowledge, is fairly homogenous. "I use a wide array of commands"
-is correlated with all other questions in this vector; the rest are correlated
-with half or more of the vector.
+Our entry survey had three groups of questions intended to serve as vectors for
+a user: usability, efficiency, and knowledge. This usability vector is composed
+of the questions in the top-left corner of the pearson graph. We can see that
+this vector is not homogenous \-- a user's given response on one of the vector's
+questions does not correlate to most of the rest of the vector's questions. The
+next set, efficency, is better connected; ``I use control structures in the
+shell'' is the outlier for this group. The last set on the entry survey,
+knowledge, is fairly homogenous. ``I use a wide array of commands'' is correlated
+with all other questions in this vector; the rest are correlated with half or
+more of the vector.
 
 Our exit survey was composed of three vectors of questions as well: usability,
 education, and intention. Each of these vectors is fairly homogenous. The
-usability group has a single outlier: "I find the interface of the system
-inviting and usable". Interestingly, this question is well-correlated with the
+usability group has a single outlier: ``I find the interface of the system
+inviting and usable''. Interestingly, this question is well-correlated with the
 education vector. Both the education and intention vectors are fully correlated.
 
 The Pearson correlation matrix shows a few correlations of significance outside
 of the question vectors.  From the entry survey the question most correlated to
-others is "I feel comfortable using the shell". Users' responses to this question
+others is ``I feel comfortable using the shell''. Users' responses to this question
 have a positive correlation with two question under the efficiency vector, three
 question under the knowledge vector, a single question under the usability
 vector, and two questions under the education vector. This shows that users who
@@ -188,17 +180,22 @@ shell also found the prototype more usable. This might indicate that our
 prototype is failing to serve our target of entry-level users.
 
 From the exit survey the most widely associable response is a user's answer to
-the question "The system would improve my usage of the shell." The responses to
+the question ``The system would improve my usage of the shell.'' The responses to
 this question are positively correlateable to every other question on the exit
 survey.
 
 The only negative correlation of significance is between two question on the
-entry survey: "I use control structures in the shell" and "I think I would
-prefer the shell if I understood it".
+entry survey: ``I use control structures in the shell'' and ``I think I would
+prefer the shell if I understood it''.
 
-!!! FIGURE HERE !!!
+\begin{figure}[H]
+  \centering
+\label{fig:alldata}
+  \includegraphics[width=\textwidth]{figures/stats/all.png}
+  \caption{Data is free}
+\end{figure}
 
-In \ref{fig:all} can be seen an overview of all of our responses. There were no
+In \ref{fig:alldata} can be seen an overview of all of our responses. There were no
 correlations of significance between education levels and any response, so we
 choose to analyze the data as a single group. On the entry survey most users
 reported low comfort with shell usage and a preference for GUI tools. Almost all
@@ -216,24 +213,25 @@ being usable, educational, or a good experience.
     analysis result can support the hypotheses in Section 8.
 
 Our entry and exit surveys each had at least one qualitative response question.
-The responses to these can be seen in Appendix \ref{fig:fig_data}.
+The responses to these can be seen in Appendix
+% \ref{fig:fig_data}.
 The entry survey asked users what tasks they commonly carried out in the shell.
 Seven out of the fifteen responses indicated navigation and file manipulation,
 five indicated programming-related tasks, and four indicated searching.
 
 There were two qualitative response questions on the exit survey. The first
 asked users what they liked most about the prototype. There is no clear
-consensus here - users reported liking the GUI elements, the context window, the
+consensus here \-- users reported liking the GUI elements, the context window, the
 undo functionality, the suggested automations, and other disparate features.
 
 The second asked users what they thought needed the most improvement in the
 prototype. Three users indicated that more information is needed in the
-interface; one wrote: "More instructions on what the buttons on bottom will do
-if pressed would be nice-- I know the functionality of the buttons isn't
+interface; one wrote: ``More instructions on what the buttons on bottom will do
+if pressed would be nice \-- I know the functionality of the buttons isn't
 implemented yet, but a small message explaining what the buttons represent and
-happens when they are clicked would go a long way". Two users reported confusion
-with the prototype. Five did not provide an answer or indicated that they had no
-suggestions.
+happens when they are clicked would go a long way.'' Two users reported
+confusion with the prototype. Five did not provide an answer or indicated that
+they had no suggestions.
 
 %%% Local Variables:
 %%% mode: latex
