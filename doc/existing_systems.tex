@@ -6,7 +6,7 @@ our ideas for a richer shell.
 While there exists no application that covers all of the contextual and adaptive
 features discussed in this paper, the following existing systems tackle many of
 our ideas for a richer shell.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/existing/xterm.png}
   \caption{An xterm window.}
@@ -19,7 +19,7 @@ provides a shell. However, it is able to provide far more contextual information
 than that of xterm. The shell can alert the terminal emulator itself about the
 state of the system (such as current git status), as well as embed images into
 the text result.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/existing/iterm2.png}
   \caption{An iTerm 2 window, with inline images.}
@@ -31,11 +31,11 @@ Both zsh and fish are shell programs designed to be more usable alternatives to
 bash. A large part of this usability revolves around autocompletion and
 suggestion. Fish will suggest command as you type (though it is not
 bash-compatible). Zsh allows arbitrary autocompletion to be added to the system.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/existing/fish.png}
   \caption{A fish shell, showing a suggested input.}
-  \label{fig:iterm}
+  \label{fig:fish}
 \end{figure}
 
 \subsection{Explain Shell}
@@ -43,11 +43,11 @@ Explain shell is an educational tool which will break up a command, and explain
 how it worked and what it means. This tool does not itself provide a shell, but
 it does provide a tool which can be used to learn and understand bash and
 related programs.
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/existing/eplainshell.png}
   \caption{A screen shot of explain shell breaking down a command.}
-  \label{fig:iterm}
+  \label{fig:explainsh}
 \end{figure}
 
 \subsection{Jupyter}
@@ -56,16 +56,17 @@ analytic languages (such as Julia, Python, and R). It allows graphical response
 to commands, and let’s users distribute entire “sessions” of use. An important
 feature is once a command is run, the user can edit the command. This chance
 will then propagate through the history.
-\begin{figure}[h]
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/existing/ipython.png}
   \caption{An interactive jupyter session.}
-  \label{fig:iterm}
+  \label{fig:jupyter}
 \end{figure}
 
 \subsection{Comparison of Features}
 
-\begin{table}[h]
+\begin{table}[H]
   \centering
   \begin{tabular}{|l|r|r|r|r|r|r|}
     \hline
@@ -84,5 +85,5 @@ will then propagate through the history.
 \end{table}
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "documentation"
 %%% End:
