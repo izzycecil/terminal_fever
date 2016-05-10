@@ -82,50 +82,70 @@ male CS majors. Linux was the dominant operating system, but not exclusive. The
 reported education levels were diverse, spanning from the sophomore to graduate
 levels.
 
-% TODO: Probably make subfigs for this data?
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/age.png}
-  \caption{\label{fig:age} Age demographics of survey base. }
-\end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/edu.png}
-  \caption{\label{fig:edu} Education demographics of survey base. }
-\end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/gender.png}
-  \caption{\label{fig:gender} Gender demographics of survey base. }
-\end{figure}
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/os.png}
-  \caption{\label{fig:OS} OS demographics of survey base. }
-\end{figure}
-
 We used the following Julia code to analyze the relative skill levels of our
 users. Simply summing up the comfort level of all questions on the Entry survey,
 we ranked users from Novice (0 experience) to Expert (39). Figure
 \ref{fig:skill} shows a histogram representing user skill. You will notice that
 the majority of our users are more experienced (self-reportedly). This does not
 align with our target audience, however there was novice representation.
+
+% TODO: Probably make subfigs for this data?
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/stats/user-skills.png}
-  \caption{\label{fig:Skill} Histogram showing the relative skill levels of the
-    user base. Note the larger right tail. }
+  \includegraphics[width=0.8\linewidth]{figures/stats/age.png}
+  \label{fig:age}
+  \caption{ Age demographics of survey base. }
 \end{figure}
 
-overview of pearson correlation
-overview of vectors - any correlations?
-patterns in pearson correlation
-average vector response
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/stats/edu.png}
+  \label{fig:edu}
+  \caption{ Education demographics of survey base. }
+\end{figure}
 
-!!! FIGURE HERE !!!
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/stats/gender.png}
+  \label{fig:gender}
+  \caption{ Gender demographics of survey base. }
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/stats/os.png}
+  \label{fig:OS}
+  \caption{OS demographics of survey base. }
+\end{figure}
+
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=0.8\linewidth]{figures/stats/user-skills.png}
+%   \label{fig:skill}
+%   \caption{Histogram showing the relative skill levels of the user base. Note
+%     the larger right tail.}
+% \end{figure}
+
+% overview of pearson correlation overview of vectors - any correlations? patterns
+% in pearson correlation average vector response
+
+To analyze different groups of users and their attitudes toward our prototype,
+we calculated the Pearson correlation coefficient for every pair of survey
+questions. To our surprise, there were no strong correlations between the
+responses on the exit survey and \emph{any} of the demographic
+statistics\footnote{The most significant demographic education level, which
+  still had a $p$-value over $0.10$!}.  However, the data analysis did show many
+interesting correlations between the questions themselves.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth]{figures/stats/sig.png}
+  \label{fig:p_table}
+  \caption{A matrix highlighting the Pearson correlations between each pair of
+    survey questions for which the $p$-value was $< 0.05$. Darker squares
+    indicate stronger correlations in the users' answers. The bold line on the
+    diagonal indicates that each question was 100\% correlated with itself.}
+\end{figure}
 
 To get a better understanding of how our users were grouped we conducted several
 standard pearson product-moment correlation coefficient analysis'. Firstly, we
