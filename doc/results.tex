@@ -150,43 +150,28 @@ the responses to our survey questions. A full table containing exact figures is
 available in Appendix
 % \ref{fig:p_table}.
 
-Our entry survey had three groups of questions intended to serve as vectors for
-a user: usability, efficiency, and knowledge. This usability vector is composed
-of the questions in the top-left corner of the pearson graph. We can see that
-this vector is not homogenous \-- a user's given response on one of the vector's
-questions does not correlate to most of the rest of the vector's questions. The
-next set, efficency, is better connected; ``I use control structures in the
-shell'' is the outlier for this group. The last set on the entry survey,
-knowledge, is fairly homogenous. ``I use a wide array of commands'' is correlated
-with all other questions in this vector; the rest are correlated with half or
-more of the vector.
+Our entry survey contained groups of questions intended to determine a user's
+familiarity, proficiency, and confidence with the shell. Looking at the Pearson
+graph, we can briefly examine how well-correlated the individual questions are
+to their groups. The familiarity group, in the top left corner, is the least
+self-correlated of these three groups. The following two \-- proficiency and
+confidence \-- show more self correlation, with most of questions correlated to
+at least half of their own groups.
 
-Our exit survey was composed of three vectors of questions as well: usability,
-education, and intention. Each of these vectors is fairly homogenous. The
-usability group has a single outlier: ``I find the interface of the system
-inviting and usable''. Interestingly, this question is well-correlated with the
-education vector. Both the education and intention vectors are fully correlated.
+Our exit survey was broken into three question groups designed for probing a
+user's opinion on the usability of the shell, it's educational potential, and
+their overall experience with it. Looking at the bottom half of the Pearson
+graph, it can be seen that these question groups are very well self-correlated.
 
-The Pearson correlation matrix shows a few correlations of significance outside
-of the question vectors.  From the entry survey the question most correlated to
-others is ``I feel comfortable using the shell''. Users' responses to this question
-have a positive correlation with two question under the efficiency vector, three
-question under the knowledge vector, a single question under the usability
-vector, and two questions under the education vector. This shows that users who
-are more comfortable with using the shell are also more likely to self-report
-being skilled users of it, unsurprisingly. From the exit survey questions, this
-collection shows that users who self-reported being more comfortable with the
-shell also found the prototype more usable. This might indicate that our
-prototype is failing to serve our target of entry-level users.
+The Pearson graph shows a few patterns of interest. Note the question from our
+entry survey, ``I feel comfortable using the shell''. This question is
+correlated with parts of the usability and education question groups on the exit
+survey; it's most strongly correlated with the entry survey question "I feel
+that I have sufficient knowledge of the shell for what I need."
 
-From the exit survey the most widely associable response is a user's answer to
-the question ``The system would improve my usage of the shell.'' The responses to
-this question are positively correlateable to every other question on the exit
-survey.
-
-The only negative correlation of significance is between two question on the
-entry survey: ``I use control structures in the shell'' and ``I think I would
-prefer the shell if I understood it''.
+The surveys have a single negative correlation of significance. It's between two
+questions on the entry survey: ``I use control structures in the shell'' and ``I
+think I would prefer the shell if I understood it''.
 
 \begin{figure}[H]
   \centering
