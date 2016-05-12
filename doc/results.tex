@@ -69,20 +69,24 @@ contained the following questions:
     \hline
   \end{tabular}
 \end{center}
-In between these surveys we presented a demo of our system.
+
+In between these surveys we presented a demo of our system. There were 28 total
+respondents to the survey, only 15 of whom completed both the entry and the exit
+surveys.
 
 \subsection{Data Analysis}
 
-Data analysis was carried out using the Julia and Python languages, along with
-various statistical tools. A cursory data analysis was also provided by Google
-Sheets, allowing an overview of the results from each question.
+Data analysis was carried out using scientific computing libraries provided by
+the Julia and Python programming languages. A cursory data analysis was also
+provided by Google Forms, which gave a basic initial overview of the responses
+to each question.
 
 The first thing we wanted to do was understand the demographics of our survey.
-The primary questions of age and gender did not show enough diversity to be very
+The questions of age and gender did not show enough diversity to be very
 statistically useful \-- almost all of the respondents were males between the
 ages of 18 and 24. Education level showed a more promisingly even distribution,
 and while the question of primary operating system is skewed in favor of Linux
-(clearly indicating some selection bias), users of other OSes still have a
+(clearly indicating more selection bias), users of other OSes still have a
 decent representation.
 
 \begin{figure}[ht]
@@ -94,13 +98,13 @@ decent representation.
   \end{subfigure}
   \quad
   \begin{subfigure}[b]{0.45\textwidth}
-\label{fig:gender}
+    \label{fig:gender}
     \includegraphics[width=\textwidth]{figures/stats/gender.png}
     \caption{Gender}
   \end{subfigure}
 
   \begin{subfigure}[b]{0.45\textwidth}
-\includegraphics[width=\textwidth]{figures/stats/edu.png}
+    \includegraphics[width=\textwidth]{figures/stats/edu.png}
     \caption{Education}
     \label{fig:edu}
   \end{subfigure}
@@ -115,10 +119,12 @@ decent representation.
 
 Our entry survey also includes questions pertaining to the users' abilities when
 using the terminal. Figure \ref{fig:skillz} shows a histogram representing a
-simple additive ranking of the participants self-reported skills. The majority
-of our users claim to be more experienced with the shell, which unfortunately
-does not align with our target audience. However, there was still novice
-representation in the data.
+simple additive ranking of the participants self-reported abilities. The
+majority of our users claimed to be more experienced with the shell, which is
+very unfortunate because that does not match at all with the target audience we
+hoped to be gathering feedback from. There was still some novice representation
+in the data, so it was still possible to correlate the survey responses with
+skill levels.
 
 \begin{figure}[H]
   \centering
@@ -128,13 +134,17 @@ representation in the data.
   \label{fig:skillz}
 \end{figure}
 
-To analyze different groups of users and their attitudes toward our prototype,
-we calculated the Pearson correlation coefficient for every pair of survey
-questions. To our surprise, there were no strong correlations between the
-responses on the exit survey and \emph{any} of the demographic
-statistics\footnote{The most significant demographic education level, which
-  still had a $p$-value over $0.10$!}.  However, the data analysis did show many
-interesting correlations between the questions themselves.
+We wanted to learn as much as possible from our limited data, so we calculated
+the Pearson correlation coefficient between the sets of responses for
+\emph{every} pair of survey questions. This allowed us to detect every single
+interrelationship between the entry and exit surveys that could be considered at
+all interesting. The first major surprise to come out of this exhaustive
+approach was that there were no significant correlations at all for \emph{any}
+of the demographic questions\footnote{The most significant demographic was
+  education level, but it was still not associated with anything with a
+  $p$-value less $0.10$!}. The questions like age and gender and level of
+education don't allow us to draw any meaningful conclusions, however there are
+still interesting connections between the questions themselves.
 
 \begin{figure}[ht]
   \centering
@@ -145,18 +155,15 @@ interesting correlations between the questions themselves.
   \label{fig:pvalplot}
 \end{figure}
 
-Figure \ref{fig:pvalplot} shows the statistically significant correlations between
-the responses to our survey questions. A full table containing exact figures is
-available in Appendix
-% \ref{fig:p_table}.
-
-Our entry survey contained groups of questions intended to determine a user's
-familiarity, proficiency, and confidence with the shell. Looking at the Pearson
-graph, we can briefly examine how well-correlated the individual questions are
-to their groups. The familiarity group, in the top left corner, is the least
-self-correlated of these three groups. The following two \-- proficiency and
-confidence \-- show more self correlation, with most of questions correlated to
-at least half of their own groups.
+Figure \ref{fig:pvalplot} shows a heat map of the statistically significant
+Pearson correlations in the responses to our survey. Our entry survey contained
+groups of questions intended to determine a user's familiarity, proficiency, and
+confidence with the shell. Looking at the Pearson graph, we can briefly examine
+how well-correlated the individual questions are to their groups. The
+familiarity group, in the top left corner, is the least self-correlated of these
+three groups. The following two \-- proficiency and confidence \-- show more
+self correlation, with most of questions correlated to at least half of their
+own groups.
 
 Our exit survey was broken into three question groups designed for probing a
 user's opinion on the usability of the shell, it's educational potential, and
